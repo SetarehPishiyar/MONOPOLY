@@ -2,11 +2,7 @@ package MONOPOLY;
 
 import java.util.Scanner;
 
-public class Airport extends Property{
-
-    public Airport(String name, int price, int rent){
-        super(name , price , rent);
-    }
+public class Airport extends Square{
 
     public void fly(Player currentPlayer, int position) {
         currentPlayer.moveTo(position);
@@ -30,9 +26,9 @@ public class Airport extends Property{
         System.out.println("Ticket Bought. Choose destination: (3 , 11 , 20)");
         Scanner input = new Scanner(System.in);
         int destination = input.nextInt();
-        while ((destination != 3 && destination != 11 && destination != 20) || destination == currentPlayer.getPosition()){
+        while ((destination != 3 && destination != 11 && destination != 20) || destination == currentPlayer.index()){
             System.out.println("invalid input. this destination is not an airport. choose another destination:");
-            if(destination == currentPlayer.getPosition())
+            if(destination == currentPlayer.index())
                 System.out.println("You are already here. choose another destination:");
             destination = input.nextInt();
         }

@@ -2,8 +2,7 @@ package MONOPOLY;
 
 public class Tax extends Square{
 
-    public Tax(String name, Player currentPlayer){
-        super(name);
+    public Tax(Player currentPlayer){
         currentPlayer.money -= (currentPlayer.money/10);
     }
 
