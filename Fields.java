@@ -1,13 +1,34 @@
 package MONOPOLY;
 
 public class Fields extends Property {
-    private Player owner;
+    private Player holder;
     private int price;
-    public int numOfHouses;
     private House[] houses = new House[4];
     private Hotel hotel;
 
-    private void setPrice() {
+    public int getNumbersOfHouss() {
+        int num=0;
+        while (houses[num]!=null)
+            num++;
+        return num;
+    }
+
+    public Fields(String name, int price, int rent) {
+        super(name, 100, rent);
+    }
+
+    //when owner builds a new house ( more than one ) this method should be called
+    public void increaseRent() {
+        setRent(getRent() + 100);
+    }
+
+    //when owner builds a new house ( more than one ) or hotel this method should be called.
+    //this method returns the new price
+    public int increasePrice() {
+        return getPrice() + 150;
+    }
+
+/*    private void setPrice() {
         if(hotel != null) {
             price = 800;
             setRent(600);
@@ -21,58 +42,5 @@ public class Fields extends Property {
         //----------
         // CINEMA
         //---------
-    }
-
-    public Fields(String name, int price, People holder, Player player) {
-        super(name, player);
-        this.price = price;
-        this.holder = holder;
-    }
-
-    public People getHolder() {
-        return holder;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void depositMoney(double amount) {
-        double oldMoney = holder.cashPossessions.getMoney();
-        holder.cashPossessions.setMoney(oldMoney + amount);
-    }
-
-    public void build() {
-
-    }
-
-    public void sell(Fields utility) {
-        depositMoney(price);
-        int len=0;
-        for(int i=0; getPlayer().utilities[i] != null; i++)
-            len++;
-        getPlayer().utilities[len-1] = null;
-        len = 0;
-        for (int i=0; Banker.utilities[i] != null; i++)
-            len++;
-        Banker.utilities[len] = utility;
-    }
-
-    public void buy(Fields utility) {
-        withdrawMoney(price);
-        int len=0;
-        for(int i=0; getPlayer().utilities[i] != null; i++)
-            len++;
-        getPlayer().utilities[len] = utility;
-        len = 0;
-        for (int i=0; Banker.utilities[i] != null; i++)
-            len++;
-        Banker.utilities[len-1] = null;
-    }
-
-    public int getNumHouses(){}
-    public int getNumHotels(){}
-
+    }*/
 }
-
-//override getrent
