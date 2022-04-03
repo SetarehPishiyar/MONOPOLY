@@ -7,6 +7,7 @@ public class Chance extends Square {
 
     public Chance(String name, Player currentPlayer){
         super(name);
+        Jail jail=new Jail;
 
         Random input = new Random();
         int RanNum = input.nextInt(7) + 1;
@@ -15,7 +16,7 @@ public class Chance extends Square {
                 currentPlayer.money+=200;
                 break;
             case 2:
-                //go to jail
+                jail.sendToJail(currentPlayer);
                 break;
             case 3:
                 currentPlayer.money -= (currentPlayer.money/10);
