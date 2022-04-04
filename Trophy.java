@@ -1,7 +1,10 @@
 package MONOPOLY;
 public class Trophy extends Square{
 
-    public Trophy(Player currentPlayer) {
-        currentPlayer.money += 200;
+    public Trophy(int index){
+        super(index);
+    }
+    public void getTrophy(Player currentPlayer) {
+        currentPlayer.addMoney(200);
     }
 }

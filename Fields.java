@@ -1,20 +1,18 @@
 package MONOPOLY;
 
 public class Fields extends Property {
-    private Player holder;
-    private int price;
     private House[] houses = new House[4];
     private Hotel hotel;
 
-    public int getNumbersOfHouss() {
+    public int getNumbersOfHouses() {
         int num=0;
         while (houses[num]!=null)
             num++;
         return num;
     }
 
-    public Fields(String name, int price, int rent) {
-        super(name, 100, rent);
+    public Fields(int index , int price, int rent) {
+        super(index, 100, rent);
     }
 
     //when owner builds a new house ( more than one ) this method should be called

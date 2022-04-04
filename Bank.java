@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Bank extends Square{
 
+    public Bank(int index){
+        super(index);
+    }
+
     public void offerInvest(Player currentPlayer){
         System.out.println("Do you want to invest? y/n");
         Scanner input = new Scanner(System.in);
@@ -16,13 +20,13 @@ public class Bank extends Square{
 
         if(answer.equalsIgnoreCase("y")) {
             invest(currentPlayer);
-            currentPlayer.invested = true;
         }
     }
 
     public void invest(Player currentPlayer){
         currentPlayer.lendedMoney = currentPlayer.money / 2;
         currentPlayer.money -= currentPlayer.lendedMoney;
+        currentPlayer.invested = true;
     }
 
     public void getBonus(Player currentPlayer){

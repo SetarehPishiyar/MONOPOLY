@@ -9,7 +9,7 @@ public class Airport extends Square{
         currentPlayer.setPosition(position);
     }
 
-    public void OfferBuyTicket(Player currentPlayer){
+    public void offerBuyTicket(Player currentPlayer){
         System.out.println("Would you want to buy ticket? y/n");
         Scanner input = new Scanner(System.in);
         String answer = input.next();
