@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Airport extends Square{
 
+    public Airport(int index){
+        super(index);
+    }
+
     public void fly(Player currentPlayer, int position) {
         currentPlayer.moveTo(position);
         currentPlayer.setPosition(position);
@@ -13,7 +17,7 @@ public class Airport extends Square{
         System.out.println("Would you want to buy ticket? y/n");
         Scanner input = new Scanner(System.in);
         String answer = input.next();
-        while (answer.equalsIgnoreCase("y") && answer.equalsIgnoreCase("n")){
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")){
             System.out.println("invalid input.");
             answer = input.next();
         }

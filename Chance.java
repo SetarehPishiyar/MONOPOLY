@@ -5,24 +5,25 @@ import java.util.Random;
 public class Chance extends Square {
 
 
-    public Chance(String name, Player currentPlayer){
-        super(name);
-        Jail jail=new Jail;
+    public Chance(int index){
+        super(index);}
+
+    public void getChanceCard(Player currentPlayer, Board currentBoard) {
 
         Random input = new Random();
         int RanNum = input.nextInt(7) + 1;
-        switch (RanNum){
+        switch (RanNum) {
             case 1:
-                currentPlayer.money+=200;
+                currentPlayer.money += 200;
                 break;
             case 2:
-                jail.sendToJail(currentPlayer);
+                currentBoard.jail.sendToJail(currentPlayer);
                 break;
             case 3:
-                currentPlayer.money -= (currentPlayer.money/10);
+                currentPlayer.money -= (currentPlayer.money / 10);
                 break;
             case 4:
-                currentPlayer.moveTo(index+3);
+                currentPlayer.moveTo(index + 3);
                 break;
             case 5:
                 //out of jail   BONUS
@@ -34,6 +35,7 @@ public class Chance extends Square {
                 //10$ to all players   BONUS
                 break;
         }
+    }
 
     }
 
