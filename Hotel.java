@@ -1,7 +1,7 @@
 package MONOPOLY;
 
 public class Hotel extends Property {
-    public Hotel(String name, int price, int rent) {
-        super(name, price, 600);
+    public Hotel(int index, int price, int rent) {
+        super(index, price, 600);
     }
 }
