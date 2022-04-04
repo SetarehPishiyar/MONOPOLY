@@ -9,20 +9,19 @@ public class Player {
     public boolean inJail = false;
     public boolean invested = false;
     public int lendedMoney = 0;
-    public int turnsInJail = 0;
-    private int index;
+    private int position;
     protected int money = 1500;
     public ArrayList<Property> properties = new ArrayList<Property>();
 
     public Player(String name){
         this.name = name;
-        index = 1;
+        position = 1;
     }
 
-    public int index() { return index; }
+    public int index() { return position; }
 
     public void setPosition(int position){
-        this.index = position;
+        this.position = position;
     }
 
     public String getName() { return name; }
@@ -44,7 +43,7 @@ public class Player {
         if(position >= 25)
             position %= 24;
 
-        this.index = position;
+        this.position = position;
 
     }
 
@@ -66,38 +65,37 @@ public class Player {
         addMoney(property.getPrice() / 2);
         property.setOwner(null);
     }
-    public void sell2 (int position){
+    public void sell2 (int index){
 
     }
 
     public void free(){
         inJail = false;
         addMoney(-50);
-        turnsInJail = 0;
     }
 
-    public void build(Fields currentField){
-        if(currentField.getOwner().equals(this)){
-            if(currentField.getNumHouses() < 4){
-                currentField.numOfHouses++;
-                addMoney(-150);
-                currentField.setRent(currentField.getNumHouses()*100 + 50);
-                currentField.setPrice(currentField.getPrice()+150);
-                System.out.println("Your House is built now. Number of houses: " + currentField.getNumHouses());
-            }
-            else if(currentField.getNumHouses() == 4 && currentField.getNumHotels() == 0){
-                addMoney(-100);
-                currentField.setPrice(currentField.getPrice()+100);
-                currentField.setRent(600);
-                System.out.println("Your Hotel is built now.");
-            }
-            else
-                System.out.println("You can not add any house or hotel.");
-        }
-        else
-            System.out.println("Sorry this property doesn't belong to you.");
-
-    }
+//    public void build(Fields currentField){
+//        if(currentField.getOwner().equals(this)){
+//            if(currentField.getNumbersOfHouses() < 4){
+//                currentField.numOfHouses++;
+//                addMoney(-150);
+//                currentField.setRent(currentField.getNumHouses()*100 + 50);
+//                currentField.setPrice(currentField.getPrice()+150);
+//                System.out.println("Your House is built now. Number of houses: " + currentField.getNumHouses());
+//            }
+//            else if(currentField.getNumHouses() == 4 && currentField.getNumHotels() == 0){
+//                addMoney(-100);
+//                currentField.setPrice(currentField.getPrice()+100);
+//                currentField.setRent(600);
+//                System.out.println("Your Hotel is built now.");
+//            }
+//            else
+//                System.out.println("You can not add any house or hotel.");
+//        }
+//        else
+//            System.out.println("Sorry this property doesn't belong to you.");
+//
+//    }
 
 
     public void fly(int position) {

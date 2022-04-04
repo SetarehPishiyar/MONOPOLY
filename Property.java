@@ -1,14 +1,14 @@
 package MONOPOLY;
 
 public abstract class Property extends Square{
-    private String name;
+    //private String name;
     private int price;
     private int rent;
     protected Player owner;
     public boolean mortgaged = false;
 
-    public Property(String name, int price, int rent){
-        super(name);
+    public Property(int index, int price, int rent){
+        super(index);
         this.price = price;
         this.rent = rent;
     }
@@ -37,11 +37,9 @@ public abstract class Property extends Square{
         owner = newOwner;
     }
 
-    public void bought(Player currentPlayer){
-        owner = currentPlayer;
-        currentPlayer.buy(this);
-    }
-
-
-    // offerBuy & doAction miss
+//    public void bought(Player currentPlayer){
+//        owner = currentPlayer;
+//        currentPlayer.buy(this);
+//    }
+    public void offer(){}
 }
