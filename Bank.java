@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Bank extends Square{
 
-    public Bank(){
-        super(21);
+    public Bank(int index){
+        super(index);
     }
 
     public void offerInvest(Player currentPlayer){
