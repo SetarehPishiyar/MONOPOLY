@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class Dice {
 
-    public int Roll(Player currentPlayer){
+    public int Roll(Player currentPlayer, Board currentboard){
 
-        Jail jail = new Jail();
         Scanner input = new Scanner(System.in);
         int DiceNumber = input.nextInt();
         while (!isValid(DiceNumber)) {
@@ -22,20 +21,16 @@ public class Dice {
                 DiceNumber = input.nextInt();
             }
             if (DiceNumber == 6){
-                jail.sendToJail(currentPlayer);
+                currentboard.jail.sendToJail(currentPlayer);
             }
         }
         if(DiceNumber == 1){
             if(currentPlayer.inJail){
-                jail.freeByTurns(currentPlayer);
+                currentboard.jail.freeByTurns(currentPlayer);
             }
         }
         if(currentPlayer.inJail && DiceNumber!=1){
-            currentPlayer.turnsInJail++;
             currentPlayer.addMoney(-10);
-            if(currentPlayer.turnsInJail == 5) {
-                jail.freeByTurns(currentPlayer);
-            }
         }
         return DiceNumber;
     }

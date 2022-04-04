@@ -13,7 +13,7 @@ public class Bank extends Square{
         Scanner input = new Scanner(System.in);
         String answer = input.next();
 
-        while (answer.equalsIgnoreCase("y") && answer.equalsIgnoreCase("n")){
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")){
             System.out.println("invalid input. y/n");
             answer = input.next();
         }
