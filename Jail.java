@@ -1,4 +1,7 @@
 package MONOPOLY;
+
+import java.util.Scanner;
+
 public class Jail extends Square {
 
     public Jail(int index){
@@ -13,14 +16,19 @@ public class Jail extends Square {
         jailedPlayer.addMoney(-50);
         System.out.println("Player " + jailedPlayer.getName() + " is free now.");
     }
-    public void freeByTurns(Player jailedPlayer){
-        jailedPlayer.inJail = false;
-        System.out.println("Player " + jailedPlayer.getName() + " is free now.");
-    }
-
     public void offer(Player currentPlayer){
+        System.out.println("you can pay 50$ and release from prison or stay there and pay 10$ for each round.\n enter free for releasing. ");
+        Scanner sc=new Scanner(System.in);
+        String answer=sc.next();
+        if (answer.equalsIgnoreCase("free")){
+            if (currentPlayer.money>100)
+            free(currentPlayer);
+            else {
 
+            }
+        }
     }
+
 
 
 }
