@@ -72,7 +72,7 @@ public class MainGame {
             return;
         }
         else {
-            while (!isEnded){
+            while (!endGame()){
                 System.out.println("round "+round);
                 for (int i=0;i<numberOfPlayer;i++){
                     if (!players[i].isLost(players[i])){
@@ -188,9 +188,6 @@ public class MainGame {
                 System.out.println(currentPlayer.rank);
         }}
     }
-
-
-
     public boolean endGame () {
         rank();
         for (Player p:players){
