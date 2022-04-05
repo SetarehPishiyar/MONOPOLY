@@ -26,7 +26,8 @@ public class Airport extends Square{
     }
 
     public void buyTicket(Player currentPlayer){
-        currentPlayer.money -= 50;
+        if(currentPlayer.getMoney()>=50){
+        currentPlayer.addMoney(-50);
         System.out.println("Ticket Bought. Choose destination: (3 , 11 , 20)");
         Scanner input = new Scanner(System.in);
         int destination = input.nextInt();
@@ -37,5 +38,8 @@ public class Airport extends Square{
             destination = input.nextInt();
         }
         fly(currentPlayer,destination);
+        }
+        else
+            System.out.println("You don't have enough money.");
     }
 }
