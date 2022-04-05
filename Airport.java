@@ -14,14 +14,14 @@ public class Airport extends Square{
     }
 
     public void offerBuyTicket(Player currentPlayer){
-        System.out.println("Would you want to buy ticket? y/n");
+        System.out.println("Would you want to buy ticket? enter fly for buying");
         Scanner input = new Scanner(System.in);
         String answer = input.next();
-        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")){
+        while (!answer.equalsIgnoreCase("fly") && !answer.equalsIgnoreCase("n")){
             System.out.println("invalid input.");
             answer = input.next();
         }
-        if (answer.equalsIgnoreCase("y"))
+        if (answer.equalsIgnoreCase("fly "))
             buyTicket(currentPlayer);
     }
 
