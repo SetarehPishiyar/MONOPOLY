@@ -6,16 +6,16 @@ public class Board {
     private final Square[] board = new Square[25];
 
     public Jail jail;
-    public Dice dice;
 
-    public Board(Jail jail, Dice dice) {
-        this.jail = jail;
-        this.dice = dice;
+    public Board(){
 
         //creating all squares on the board
         for (int i = 1; i < 25; i++) {
             board[i] = createSquare(i);
         }
+    }
+    public Square[] getBoard(){
+        return board;
     }
 
 
