@@ -1,5 +1,7 @@
 package MONOPOLY;
 
+import java.util.Scanner;
+
 public class Fields extends Property {
     private House[] houses = new House[4];
     private Hotel hotel;
@@ -25,6 +27,7 @@ public class Fields extends Property {
     public int increasePrice() {
         return getPrice() + 150;
     }
+
 
 /*    private void setPrice() {
         if(hotel != null) {
