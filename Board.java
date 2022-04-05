@@ -52,7 +52,7 @@ public class Board {
             case 3:
                 return new Airport(3);
             case 4:
-                return new Cinema(4, 200, 25);
+                return new Cinema(4);
             case 5:
                 return new Railroad(5);
             case 6:
@@ -60,7 +60,7 @@ public class Board {
             case 7:
                 return new Fields(7, 100, 0);
             case 8:
-                return new Cinema(8, 200, 25);
+                return new Cinema(8);
             case 9:
                 return new Fields(9, 100, 0);
             case 10:
@@ -75,7 +75,7 @@ public class Board {
             case 14:
                 return new Fields(14, 100, 0);
             case 15:
-                return new Cinema(15, 200, 25);
+                return new Cinema(15);
             case 16:
                 return new Railroad(16);
             case 17:
@@ -89,7 +89,7 @@ public class Board {
             case 21:
                 return new Bank(21);
             case 22:
-                return new Cinema(22, 200, 25);
+                return new Cinema(22);
             case 23:
                 return new Fields(23, 100, 0);
             case 24:
