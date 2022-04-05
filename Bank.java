@@ -9,16 +9,16 @@ public class Bank extends Square{
     }
 
     public void offerInvest(Player currentPlayer){
-        System.out.println("Do you want to invest? y/n");
+        System.out.println("Do you want to invest? enter invest for investing or no");
         Scanner input = new Scanner(System.in);
         String answer = input.next();
 
-        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")){
-            System.out.println("invalid input. y/n");
+        while (!answer.equalsIgnoreCase("invest") && !answer.equalsIgnoreCase("no")){
+            System.out.println("invalid input. invest/no");
             answer = input.next();
         }
 
-        if(answer.equalsIgnoreCase("y")) {
+        if(answer.equalsIgnoreCase("invest")) {
             invest(currentPlayer);
         }
     }
