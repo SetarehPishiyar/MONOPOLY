@@ -62,9 +62,9 @@ public class MainGame {
         Scanner sc=new Scanner(System.in);
         String comm=sc.next();
         switch (comm){
-            case "buy":currentPlayer.buy(theBoard.board[currentPlayer.index()].getClass());
+            case "buy":currentPlayer.buy(currentPlayer.index());
 //            case "build":currentPlayer
-            case "sell":currentPlayer.sell2(currentPlayer.index());
+            case "sell":currentPlayer.sell(currentPlayer.index());
         }
     }
     public void startGame () {
