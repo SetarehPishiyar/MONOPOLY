@@ -9,13 +9,18 @@ public class Player {
     public boolean inJail = false;
     public boolean invested = false;
     public int lendedMoney = 0;
-    private int position;
+   public int position;
     protected int money = 1500;
+    int turnsInJail=0;
     public ArrayList<Property> properties = new ArrayList<Property>();
 
     public Player(String name){
         this.name = name;
         position = 1;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int index() { return position; }
