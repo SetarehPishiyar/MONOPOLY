@@ -1,6 +1,7 @@
 package MONOPOLY;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Player {
@@ -63,7 +64,6 @@ public class Player {
         else
             System.out.println("This property is mortgaged.");
     }
-
     public void sell(Property property){
         properties.remove(property);
         property.mortgaged = false;
@@ -73,10 +73,19 @@ public class Player {
     public void sell2 (int index){
 
     }
-
     public void free(){
         inJail = false;
         addMoney(-50);
+    }
+    public void doesntHaveEnoughMoney(Player player,int price){
+        if (player.money<price && !player.isLost(player)){
+            System.out.println("It seems you dont have enough money \n sell something.");
+            player.Property();
+            System.out.println("What do you want to sell? enter the number");
+            Scanner sc=new Scanner(System.in);
+            int answer=sc.nextInt();
+            player.sell(player.properties.get(answer));
+        }
     }
 
 //    public void build(Fields currentField){
@@ -101,13 +110,10 @@ public class Player {
 //            System.out.println("Sorry this property doesn't belong to you.");
 //
 //    }
-
-
     public void fly(int position) {
         this.moveTo(position);
         this.setPosition(position);
     }
-
     public boolean owns(Property property){
 
         if(property.owner.equals(this))
@@ -115,8 +121,6 @@ public class Player {
         else
             return false;
     }
-
-
     public int getNumCinemas(){
         int numCinemas = 0;
         for(Property p : properties){
@@ -126,7 +130,6 @@ public class Player {
         }
         return numCinemas;
     }
-
     public int getNumFields(){
         int numFields = 0;
         for(Property p : properties){
@@ -136,13 +139,18 @@ public class Player {
         }
         return numFields;
     }
-
     public void Property(){
         System.out.println("Your properties:");
-        System.out.println(this.properties);
+        for (int i=0;i<properties.size();i++){
+            System.out.println(i+"-"+properties.get(i).toString());
+        }
         System.out.println("Your money: " + money + "$");
     }
-
+public boolean isLost(Player player){
+        if (player.properties.size()==0 && player.money==0)
+            return true;
+        else return false;
+}
     //public ArrayList<Property> getHouseableProperties(){}
 
 }
