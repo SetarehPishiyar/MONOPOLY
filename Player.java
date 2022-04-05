@@ -162,6 +162,11 @@ public class Player {
             return true;
         else return false;
     }
-    //public ArrayList<Property> getHouseableProperties(){}
-
+public int getWealth(){
+        int wealth=0;
+        for (Property p:properties)
+            wealth+=p.getPrice();
+        wealth+=money;
+        return wealth;
+}
 }
