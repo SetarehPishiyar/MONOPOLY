@@ -10,12 +10,14 @@ public class Player {
     public boolean invested = false;
     public int lendedMoney = 0;
     private int position;
+    public Board board;
     protected int money = 1500;
     public ArrayList<Property> properties = new ArrayList<Property>();
 
-    public Player(String name){
+    public Player(String name, Board board){
         this.name = name;
         position = 1;
+        this.board = board;
     }
 
     public int index() { return position; }
@@ -66,7 +68,7 @@ public class Player {
         property.setOwner(null);
     }
     public void sell2 (int index){
-
+        
     }
 
     public void free(){

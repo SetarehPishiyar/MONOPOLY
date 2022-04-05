@@ -11,7 +11,7 @@ public class Chance extends Square {
     public void getChanceCard(Player currentPlayer, Board currentBoard) {
 
         Random input = new Random();
-        int RanNum = input.nextInt(7) + 1;
+        int RanNum = input.nextInt(5) + 1;
         switch (RanNum) {
             case 1:
                 currentPlayer.money += 200;
@@ -26,7 +26,7 @@ public class Chance extends Square {
                 currentPlayer.moveTo(index + 3);
                 break;
             case 5:
-                //out of jail   BONUS
+                currentBoard.jail.free(currentPlayer);
                 break;
             case 6:
                 //Dafe baad Tax nadim  BONUS
@@ -36,12 +36,5 @@ public class Chance extends Square {
                 break;
         }
     }
-
-    }
-
-
-
-
-
 
 }
