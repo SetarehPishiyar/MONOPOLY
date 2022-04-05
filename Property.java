@@ -1,5 +1,7 @@
 package MONOPOLY;
 
+import java.util.Scanner;
+
 public abstract class Property extends Square{
     //private String name;
     private int price;
@@ -41,5 +43,21 @@ public abstract class Property extends Square{
 //        owner = currentPlayer;
 //        currentPlayer.buy(this);
 //    }
-    public void offer(){}
+public void offerBuying(Property prop,Player currentPlayer){
+    if (prop.mortgaged==false){
+        currentPlayer.doesntHaveEnoughMoney(currentPlayer,prop.price);
+        System.out.println("You can buy this field and earn money:) \n"+"Price:"+prop.price+"\n wanna buy this field?(enter buy if you want.)");
+        Scanner sc=new Scanner(System.in);
+        String answer=sc.next();
+        if (answer.equalsIgnoreCase("buy")){
+            currentPlayer.buy(prop);
+        }
+        return;
+    }
+}
+public void payRent(Player currentPlayer){
+        if (owner!=currentPlayer && owner!=null){
+            currentPlayer.pay(owner,rent);
+        }
+}
 }
