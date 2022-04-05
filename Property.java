@@ -39,25 +39,25 @@ public abstract class Property extends Square{
         owner = newOwner;
     }
 
-//    public void bought(Player currentPlayer){
+    //    public void bought(Player currentPlayer){
 //        owner = currentPlayer;
 //        currentPlayer.buy(this);
 //    }
-public void offerBuying(Property prop,Player currentPlayer){
-    if (prop.mortgaged==false){
-        currentPlayer.doesntHaveEnoughMoney(currentPlayer,prop.price);
-        System.out.println("You can buy this field and earn money:) \n"+"Price:"+prop.price+"\n wanna buy this field?(enter buy if you want.)");
-        Scanner sc=new Scanner(System.in);
-        String answer=sc.next();
-        if (answer.equalsIgnoreCase("buy")){
-            currentPlayer.buy(prop);
+    public void offerBuying(Property prop,Player currentPlayer){
+        if (prop.mortgaged == false){
+            currentPlayer.doesntHaveEnoughMoney(currentPlayer,prop.price);
+            System.out.println("You can buy this field and earn money:) \n"+"Price:"+prop.price+"\n wanna buy this field?(enter buy if you want.)");
+            Scanner sc=new Scanner(System.in);
+            String answer=sc.next();
+            if (answer.equalsIgnoreCase("buy")){
+                currentPlayer.buyByProperty(prop);
+            }
+            return;
         }
-        return;
     }
-}
-public void payRent(Player currentPlayer){
+    public void payRent(Player currentPlayer){
         if (owner!=currentPlayer && owner!=null){
             currentPlayer.pay(owner,rent);
         }
-}
+    }
 }
