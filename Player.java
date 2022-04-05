@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Player {
 
     private String name;
+    public int rank=0;
     public boolean inJail = false;
     public boolean invested = false;
     public int lendedMoney = 0;
