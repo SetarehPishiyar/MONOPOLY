@@ -12,9 +12,9 @@ public class MainGame {
     }
     Cinema[] cinemas=new Cinema[3];
     {
-        cinemas[0]=new Cinema(4,200,25);
-        cinemas[1]=new Cinema(8,200,25);
-        cinemas[2]=new Cinema(15,200,25);
+        cinemas[0]=new Cinema(4);
+        cinemas[1]=new Cinema(8);
+        cinemas[2]=new Cinema(15);
     }
     Trophy trophy=new Trophy(6);
     Tax tax=new Tax(17);
@@ -34,8 +34,7 @@ public class MainGame {
         fields[7]=new Fields(23,100,50);
 
     }
-    Dice dice=new Dice();
-    Board theBoard=new Board(jail,dice);
+    Board theBoard=new Board();
     int numberOfPlayer = 0;
     boolean creatGame=false;
     int round=1;
@@ -53,7 +52,7 @@ public class MainGame {
         Scanner sc = new Scanner(System.in);
         while (true){
         while (sc.hasNext()) {
-            players[numberOfPlayer]=new Player(sc.next());
+            players[numberOfPlayer]=new Player(sc.nextLine(),theBoard);
             numberOfPlayer++;
         }
         if (numberOfPlayer<2 || numberOfPlayer>4){
@@ -103,7 +102,7 @@ public class MainGame {
                             }
                         }
                     }
-                    else if (players[i].inJail==true){
+                    else if (players[i].inJail){
                         players[i].addMoney(-10);
                         int DiceNum=diceNum();
                         if (DiceNum==1){
@@ -123,41 +122,47 @@ public class MainGame {
             case 2:{
                 fields[0].offerBuying(fields[0],currentPlayer);
                 fields[0].payRent(currentPlayer);
+                //offer build
             }
             case 7:{
-                fields[1].offerBuying(fields[0],currentPlayer);
+                fields[1].offerBuying(fields[1],currentPlayer);
                 fields[1].payRent(currentPlayer);
             }
             case 9:{
-                fields[2].offerBuying(fields[0],currentPlayer);
+                fields[2].offerBuying(fields[2],currentPlayer);
                 fields[2].payRent(currentPlayer);
             }
             case 12:{
-                fields[3].offerBuying(fields[0],currentPlayer);
+                fields[3].offerBuying(fields[3],currentPlayer);
                 fields[3].payRent(currentPlayer);
             }
             case 14:{
-                fields[4].offerBuying(fields[0],currentPlayer);
+                fields[4].offerBuying(fields[4],currentPlayer);
                 fields[4].payRent(currentPlayer);
             }
             case 18:{
-                fields[5].offerBuying(fields[0],currentPlayer);
+                fields[5].offerBuying(fields[5],currentPlayer);
                 fields[5].payRent(currentPlayer);
             }
             case 19:{
-                fields[6].offerBuying(fields[0],currentPlayer);
+                fields[6].offerBuying(fields[6],currentPlayer);
                 fields[6].payRent(currentPlayer);
             }
             case 23:{
-                fields[7].offerBuying(fields[0],currentPlayer);
+                fields[7].offerBuying(fields[7],currentPlayer);
                 fields[7].payRent(currentPlayer);
             }
             case 3:airports[0].offerBuyTicket(currentPlayer);
             case 11:airports[1].offerBuyTicket(currentPlayer);
             case 20:airports[2].offerBuyTicket(currentPlayer);
-//            case 4:cinemas[]
-//            case 8:
-//            case 15:
+            case 4:cinemas[0].offerBuying(cinemas[0], currentPlayer);
+            cinemas[0].payRent(currentPlayer);
+            case 8:
+                cinemas[1].offerBuying(cinemas[1], currentPlayer);
+                cinemas[1].payRent(currentPlayer);
+            case 15:
+                cinemas[2].offerBuying(cinemas[2], currentPlayer);
+                cinemas[2].payRent(currentPlayer);
             case 5,10,16:railroads.payMoney(currentPlayer);
             case 6:trophy.getTrophy(currentPlayer);
             case 17:tax.payTax(currentPlayer);
@@ -166,31 +171,49 @@ public class MainGame {
                 bank.getBonus(currentPlayer);
                 bank.offerInvest(currentPlayer);
         }
+        playersCommand(currentPlayer);
     }
     public void playersCommand(Player currentPlayer){
+        System.out.println("you can ask your index.properties,and rank or just pass");
         Scanner sc=new Scanner(System.in);
-        String comm=sc.next();
+        String comm=" ";
+        while (!comm.equalsIgnoreCase("pass")){
         switch (comm){
-            case "buy":currentPlayer.buy(theBoard.board[currentPlayer.index()].getClass());
-//            case "build":currentPlayer
-            case "sell":currentPlayer.sell2(currentPlayer.index());
-        }
+            case "index" :
+                System.out.println(currentPlayer.position);
+            case "property":
+                currentPlayer.Property();
+            case "rank":
+                rank();
+                System.out.println(currentPlayer.rank);
+        }}
     }
-    public int index () {
 
-    }
-    public int rank () {
 
-    }
-    public void startingTurn () {
-    }
-    public boolean isPlayerLost () {
 
-    }
     public boolean endGame () {
-        System.out.println("YOU WON");
-        System.out.println("YOU LOST,X WON THE GAME"); //X esme winner
+        rank();
+        for (Player p:players){
+            if (p.rank==2){
+                if (p.isLost(p)==true){
+                    for (Player p1:players){
+                        if (p1.rank==1){
+                            System.out.println(p1.getName()+"\n YOU WON");
+                            System.out.println(p.getName()+"\n YOU LOST,"+p1.getName()+"WON THE GAME");
+                            for (Player p2:players){
+                                if (p2!=p && p2!=p1){
+                                    System.out.println(p2.getName()+"\n YOU LOST,"+p1.getName()+"WON THE GAME");
 
+                                }
+                            }
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+
+return false;
     }
     public int diceNum(){
         Scanner input = new Scanner(System.in);
@@ -203,6 +226,25 @@ public class MainGame {
         return DiceNum;
 
     }
+    public void rank(){
+Player[] players1=players;
+for (int i=0;i<players1.length;i++){
+    for (int j=i+1;j<players1.length;j++){
+        if (players1[i].getWealth()<players1[j].getWealth()){
+            Player temp=players1[i];
+            players1[i]=players1[j];
+            players1[j]=temp;
+        }
+    }
+}
+
+
+for (int i=0;i<players1.length;i++){
+    players1[i].rank=i+1;
+}
+    }
+
+
 
 
 }
