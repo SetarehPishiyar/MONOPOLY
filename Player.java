@@ -37,7 +37,7 @@ public class Player {
 
     public void addMoney(int addMoney){
 
-        doesntHaveEnoughMoney(this,addMoney);
+        doesntHaveEnoughMoney(this,-addMoney);
         this.money += addMoney;
     }
 
