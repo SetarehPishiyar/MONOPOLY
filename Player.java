@@ -1,6 +1,7 @@
 package MONOPOLY;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Player {
@@ -9,15 +10,18 @@ public class Player {
     public boolean inJail = false;
     public boolean invested = false;
     public int lendedMoney = 0;
-    private int position;
-    public Board board;
+   public int position;
     protected int money = 1500;
+    int turnsInJail=0;
     public ArrayList<Property> properties = new ArrayList<Property>();
 
-    public Player(String name, Board board){
+    public Player(String name){
         this.name = name;
         position = 1;
-        this.board = board;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int index() { return position; }
@@ -32,6 +36,8 @@ public class Player {
 
 
     public void addMoney(int addMoney){
+
+        doesntHaveEnoughMoney(this,addMoney);
         this.money += addMoney;
     }
 
@@ -60,7 +66,6 @@ public class Player {
         else
             System.out.println("This property is mortgaged.");
     }
-
     public void sell(Property property){
         properties.remove(property);
         property.mortgaged = false;
@@ -68,43 +73,28 @@ public class Player {
         property.setOwner(null);
     }
     public void sell2 (int index){
-        
-    }
 
+    }
     public void free(){
         inJail = false;
         addMoney(-50);
     }
-
-//    public void build(Fields currentField){
-//        if(currentField.getOwner().equals(this)){
-//            if(currentField.getNumbersOfHouses() < 4){
-//                currentField.numOfHouses++;
-//                addMoney(-150);
-//                currentField.setRent(currentField.getNumHouses()*100 + 50);
-//                currentField.setPrice(currentField.getPrice()+150);
-//                System.out.println("Your House is built now. Number of houses: " + currentField.getNumHouses());
-//            }
-//            else if(currentField.getNumHouses() == 4 && currentField.getNumHotels() == 0){
-//                addMoney(-100);
-//                currentField.setPrice(currentField.getPrice()+100);
-//                currentField.setRent(600);
-//                System.out.println("Your Hotel is built now.");
-//            }
-//            else
-//                System.out.println("You can not add any house or hotel.");
-//        }
-//        else
-//            System.out.println("Sorry this property doesn't belong to you.");
-//
-//    }
+    public void doesntHaveEnoughMoney(Player player,int price){
+        if (player.money<price && !player.isLost(player)){
+            System.out.println("It seems you dont have enough money \n sell something.");
+            player.Property();
+            System.out.println("What do you want to sell? enter the number");
+            Scanner sc=new Scanner(System.in);
+            int answer=sc.nextInt();
+            player.sell(player.properties.get(answer));
+        }
+    }
 
 
     public void fly(int position) {
         this.moveTo(position);
         this.setPosition(position);
     }
-
     public boolean owns(Property property){
 
         if(property.owner.equals(this))
@@ -112,8 +102,6 @@ public class Player {
         else
             return false;
     }
-
-
     public int getNumCinemas(){
         int numCinemas = 0;
         for(Property p : properties){
@@ -123,7 +111,6 @@ public class Player {
         }
         return numCinemas;
     }
-
     public int getNumFields(){
         int numFields = 0;
         for(Property p : properties){
@@ -133,13 +120,18 @@ public class Player {
         }
         return numFields;
     }
-
     public void Property(){
         System.out.println("Your properties:");
-        System.out.println(this.properties);
+        for (int i=0;i<properties.size();i++){
+            System.out.println(i+"-"+properties.get(i).toString());
+        }
         System.out.println("Your money: " + money + "$");
     }
-
+public boolean isLost(Player player){
+        if (player.properties.size()==0 && player.money==0)
+            return true;
+        else return false;
+}
     //public ArrayList<Property> getHouseableProperties(){}
 
 }
