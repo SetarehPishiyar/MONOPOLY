@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Board {
     private final Square[] board = new Square[25];
 
-    public Jail jail;
+    public Jail jail=new Jail(13);
 
     public Board(){
 
