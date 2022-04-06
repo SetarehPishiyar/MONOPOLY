@@ -17,7 +17,7 @@ public class Cinema extends Property {
     @Override
     public void offerBuying(Property prop, Player currentPlayer){
         if (!prop.mortgaged){
-            currentPlayer.doesntHaveEnoughMoney(currentPlayer, prop.price);
+            currentPlayer.doesntHaveEnoughMoney(currentPlayer, prop.getPrice());
             System.out.println("You can buy this cinema and earn money:) \n"+"Price:"+prop.price+"\n wanna buy this cinema? (enter buy if you want.)");
             Scanner sc = new Scanner(System.in);
             String answer = sc.next();
