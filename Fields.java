@@ -1,5 +1,7 @@
 package MONOPOLY;
 
+import java.util.Scanner;
+
 public class Fields extends Property {
     private Player holder;
     private int price;
@@ -72,6 +74,17 @@ public class Fields extends Property {
             System.out.println("Your hotel is built now!");
         } else if(getNumHouses() == 4 && getNumHotels() == 1) {
             System.out.println("You can't add any house or hotel in your field!");
+        }
+    }
+    public void offerToBuild(Player currentPlayer,Fields field){
+        if (currentPlayer.owns(field)) {
+            System.out.println("You can build houses or hotel if you have the conditions wanna try? building each house costs 150$ for you\nyou can also convert 4 houses to a hotel and it costs 150$(enter build for trying)");
+            Scanner sc = new Scanner(System.in);
+            String answer = sc.next();
+            if (answer.equalsIgnoreCase("build"))
+                build(currentPlayer);
+            else
+                return;
         }
     }
 }
