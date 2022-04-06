@@ -38,6 +38,27 @@ public class Fields extends Property {
     }
 
     public void build(Player currentPlayer) {
+        int j=0;
+        Fields[] field = new Fields[10];
+        for(int i=0; i < currentPlayer.getNumFields(); i++) {
+            if(currentPlayer.properties.get(i) instanceof  Fields) {
+                field[j] = (Fields) currentPlayer.properties.get(i);
+                j++;
+            }
+        }
+        int maxHousesNum=0, minHousesNum=0;
+        for(int i=0; i <= j; i++) {
+            if(field[i].getNumHouses() > maxHousesNum)
+                maxHousesNum = field[i].getNumHouses();
+            if(field[i].getNumHouses() < minHousesNum)
+                minHousesNum = field[i].getNumHouses();
+        }
+        if(maxHousesNum != minHousesNum) {
+            if(this.getNumHouses() == maxHousesNum) {
+                System.out.println("You can not build another house on this field until the number of houses on other fields reaches the number of houses on this field.");
+                return;
+            }
+        }
         if(getNumHouses() < 4) {
             houses[getNumHouses()] = new House(index);
             currentPlayer.addMoney(-150);
