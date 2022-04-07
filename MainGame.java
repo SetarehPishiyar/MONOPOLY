@@ -32,7 +32,6 @@ public class MainGame {
         fields[5]=new Fields(18,100,50);
         fields[6]=new Fields(19,100,50);
         fields[7]=new Fields(23,100,50);
-
     }
     Board theBoard=new Board();
     int numberOfPlayer = 0;
@@ -69,7 +68,6 @@ public class MainGame {
     public void startGame () {
         if (!creatGame) {
             System.out.println("game was not created\n");
-            return;
         }
         else {
             while (!endGame()){
@@ -77,7 +75,7 @@ public class MainGame {
                 for (int i=0;i<numberOfPlayer;i++){
                     if (!players[i].isLost(players[i])){
                     System.out.println("It is"+players[i].getName()+"'s turn.");
-                    if (players[i].inJail==false) {
+                    if (!players[i].inJail) {
                         int diceNumber = diceNum();
                         players[i].position += diceNumber;
                         play(players[i].position, players[i]);
@@ -108,7 +106,6 @@ public class MainGame {
                         if (DiceNum==1){
                             jail.free(players[i]);
                         }
-                        else continue;
                     }
 
 
@@ -176,7 +173,7 @@ public class MainGame {
     public void playersCommand(Player currentPlayer){
         System.out.println("you can ask your index.properties,and rank or just pass");
         Scanner sc=new Scanner(System.in);
-        String comm=" ";
+        String comm = sc.next();
         while (!comm.equalsIgnoreCase("pass")){
         switch (comm){
             case "index" :
@@ -192,7 +189,7 @@ public class MainGame {
         rank();
         for (Player p:players){
             if (p.rank==2){
-                if (p.isLost(p)==true){
+                if (p.isLost(p)){
                     for (Player p1:players){
                         if (p1.rank==1){
                             System.out.println(p1.getName()+"\n YOU WON");
