@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class MainGame {
     Player[] players = new Player[9];
+<<<<<<< HEAD
     //    Airport[] airports=new Airport[3];
+=======
+//    Airport[] airports=new Airport[3];
+>>>>>>> 6306099ee67b931bd5901649a78514a8f2e126a9
 //    {
 //        airports[0]=new Airport(3);
 //        airports[1]=new Airport(11);
@@ -52,6 +56,7 @@ public class MainGame {
         while (true){
             System.out.println("enter players name and enter \"end\" at the end.");
             String name=" ";
+<<<<<<< HEAD
             while (!name.equalsIgnoreCase("end")) {
                 name=sc.next();
                 players[numberOfPlayer]=new Player(name,theBoard);
@@ -71,6 +76,27 @@ public class MainGame {
 
                 break;
             }
+=======
+        while (!name.equalsIgnoreCase("end")) {
+            name=sc.next();
+            players[numberOfPlayer]=new Player(name,theBoard);
+            numberOfPlayer++;
+        }
+        players[numberOfPlayer]=null;
+        numberOfPlayer--;
+
+        if (numberOfPlayer<2 || numberOfPlayer>4){
+
+            System.out.println("invalid,try again.");
+            numberOfPlayer=0;
+        }
+        else {
+            creategame=true;
+            System.out.println("game was created.now start the game.");
+
+            break;
+        }
+>>>>>>> 6306099ee67b931bd5901649a78514a8f2e126a9
         }
 
     }
@@ -83,6 +109,7 @@ public class MainGame {
                 System.out.println("round "+round);
                 for (int i=0;i<numberOfPlayer;i++){
                     if (!players[i].isLost(players[i])){
+<<<<<<< HEAD
                         System.out.println("It is "+players[i].getName()+"'s turn.");
                         if (!players[i].inJail) {
                             int diceNumber = diceNum();
@@ -94,6 +121,26 @@ public class MainGame {
                                 String answer = sc.next();
                                 if (answer.equalsIgnoreCase("no")) {
                                     continue;
+=======
+                    System.out.println("It is "+players[i].getName()+"'s turn.");
+                    if (!players[i].inJail) {
+                        int diceNumber = diceNum();
+                        players[i].position += diceNumber;
+                        play(players[i].position, players[i]);
+                        if (diceNumber == 6) {
+                            Scanner sc = new Scanner(System.in);
+                            System.out.println("You can play one more time.enter yes for playing and no for passing.");
+                            String answer = sc.next();
+                            if (answer.equalsIgnoreCase("no")) {
+                                continue;
+                            }
+                            if (answer.equalsIgnoreCase("yes")) {
+                                diceNumber = diceNum();
+                                if (diceNumber == 6) {
+                                    players[i].moveTo(13);
+                                    theBoard.jail.sendToJail(players[i]);
+                                    theBoard.jail.offer(players[i]);
+>>>>>>> 6306099ee67b931bd5901649a78514a8f2e126a9
                                 }
                                 if (answer.equalsIgnoreCase("yes")) {
                                     diceNumber = diceNum();
@@ -237,6 +284,7 @@ public class MainGame {
 
     }
     public void rank(){
+<<<<<<< HEAD
         Player[] players1=players;
         for (int i=0;i<numberOfPlayer-1;i++){
             for (int j=i+1;j<numberOfPlayer;j++){
@@ -253,6 +301,24 @@ public class MainGame {
             players1[i].rank=i+1;
         }
     }
+=======
+Player[] players1=players;
+for (int i=0;i<numberOfPlayer-1;i++){
+    for (int j=i+1;j<numberOfPlayer;j++){
+        if (players1[i].getWealth()<players1[j].getWealth()){
+            Player temp=players1[i];
+            players1[i]=players1[j];
+            players1[j]=temp;
+        }
+    }
+}
+
+
+for (int i=0;i<numberOfPlayer;i++){
+    players1[i].rank=i+1;
+}
+    }
+>>>>>>> 6306099ee67b931bd5901649a78514a8f2e126a9
 
 
 
