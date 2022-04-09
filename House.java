@@ -1,6 +1,6 @@
 package MONOPOLY;
 public class House extends Property {
-    public House(int index) {
-        super(index, 150, 50);
+    public House(String name,int index) {
+        super(name,index, 150, 50);
     }
 }
