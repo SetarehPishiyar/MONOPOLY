@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class Airport extends Square{
 
-    public Airport(int index){
-        super(index);
+    public Airport(String name,int index){
+        super(name,index);
     }
 
     public void fly(Player currentPlayer, int position) {
         currentPlayer.moveTo(position);
         currentPlayer.setPosition(position);
+        System.out.println("You are now in airport index "+ position );
     }
 
     public void offerBuyTicket(Player currentPlayer){
@@ -21,7 +22,7 @@ public class Airport extends Square{
             System.out.println("invalid input.");
             answer = input.next();
         }
-        if (answer.equalsIgnoreCase("fly "))
+        if (answer.equalsIgnoreCase("fly"))
             buyTicket(currentPlayer);
     }
 
