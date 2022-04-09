@@ -3,7 +3,7 @@ package MONOPOLY;
 import java.util.Scanner;
 
 public class MainGame {
-    Player[] players = new Player[4];
+    Player[] players = new Player[10];
 //    Airport[] airports=new Airport[3];
 //    {
 //        airports[0]=new Airport(3);
@@ -145,7 +145,7 @@ public class MainGame {
                 theBoard.fields18.payRent(currentPlayer);
             }
             case 19:{
-                theBoard.fields19.offerBuying(theBoard.fields19.,currentPlayer);
+                theBoard.fields19.offerBuying(theBoard.fields19,currentPlayer);
                 theBoard.fields19.payRent(currentPlayer);
             }
             case 23:{
