@@ -8,8 +8,8 @@ public class Fields extends Property {
     private House[] houses = new House[4];
     private Hotel hotel;
 
-    public Fields(int index, int price, int rent) {
-        super(index, 100, rent);
+    public Fields(String name,int index, int price, int rent) {
+        super(name,index, 100, rent);
     }
 
     public int getNumHouses(){
@@ -62,13 +62,13 @@ public class Fields extends Property {
             }
         }
         if(getNumHouses() < 4) {
-            houses[getNumHouses()] = new House(index);
+            houses[getNumHouses()] = new House(name,index);
             currentPlayer.addMoney(-150);
             increaseRent();
             increasePrice();
             System.out.printf("Your House is built now! Now you have %d houses.\n", getNumHouses());
         } else if(getNumHouses() == 4 && getNumHotels() == 0) {
-            hotel = new Hotel(index, getPrice()+100);
+            hotel = new Hotel(name,index, getPrice()+100);
             currentPlayer.addMoney(-100);
             increasePrice();
             System.out.println("Your hotel is built now!");
@@ -83,8 +83,6 @@ public class Fields extends Property {
             String answer = sc.next();
             if (answer.equalsIgnoreCase("build"))
                 build(currentPlayer);
-            else
-                return;
         }
     }
 }
