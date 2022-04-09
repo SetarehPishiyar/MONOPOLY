@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Jail extends Square {
 
-    public Jail(int index){
-        super(index);
+    public Jail(String name,int index){
+        super(name,index);
     }
     public void sendToJail(Player jailedPlayer){
         jailedPlayer.inJail = true;
