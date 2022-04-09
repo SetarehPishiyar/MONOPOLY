@@ -1,8 +1,8 @@
 package MONOPOLY;
 public class Railroad extends Square {
 
-    public Railroad(int index){
-        super(index);
+    public Railroad(String name,int index){
+        super(name,index);
     }
     public void payMoney(Player currentPlayer){
         System.out.println("rent price:100");
