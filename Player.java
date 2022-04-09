@@ -54,6 +54,7 @@ public class Player {
         if(position >= 25)
             position %= 24;
 
+        System.out.println(this.getName() + " Landed on "+ position + "th Square.");
         this.position = position;
 
     }
@@ -65,6 +66,7 @@ public class Player {
             properties.add(property);
             property.setOwner(this);
             property.mortgaged = true;
+            System.out.println("You own this property now.");
         }
         else
             System.out.println("This property is mortgaged.");
@@ -90,6 +92,7 @@ public class Player {
         property.mortgaged = false;
         addMoney(property.getPrice() / 2);
         property.setOwner(null);
+        System.out.println("Your property is sold now.");
     }
     public void sell (int index){
         if(board.getBoard(index) instanceof Fields) {
@@ -152,12 +155,14 @@ public class Player {
         return numFields;
     }
     public void Property(){
-        System.out.println("Your properties:");
-        for (int i=0;i<properties.size();i++){
-            System.out.println(i+"-"+properties.get(i).toString());
-        }
         System.out.println("Your money: " + money + "$");
+        System.out.print("Your properties: [");
+        for (Property p: properties) {
+            System.out.print(p.getName() + ",");
+        }
+        System.out.println("]");
     }
+
     public boolean isLost(Player player){
         if (player.properties.size()==0 && player.money==0)
             return true;
