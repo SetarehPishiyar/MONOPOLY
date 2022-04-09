@@ -3,10 +3,10 @@ package MONOPOLY;
 import java.util.ArrayList;
 
 public class Board {
-    private final Square[] board = new Square[25];
-     Square parking1=new Square(1);
+ private final Square[] board = new Square[25];
+ Square parking1=new Square(1);
  Fields fields2=new Fields(2, 100, 0);
-Airport airport3= new Airport(3);
+ Airport airport3= new Airport(3);
  Cinema cinema4=new Cinema(4);
  Railroad railroad5=new Railroad(5);
  Trophy trophy6=new Trophy(6);
@@ -28,10 +28,12 @@ Airport airport3= new Airport(3);
  Fields fields23=new Fields(23, 100, 0);
  Chance chance24=new Chance(24);
 
-    public Jail jail=new Jail(13);
+ public Jail jail=new Jail(13);
 
-    public Board(){}
-    }
+ public Board(){
+
+ }
+
 
 //    public static void drawBoard() {
 //        for (int i = 0; i < Y*2+1 ; i++) {
@@ -57,3 +59,60 @@ Airport airport3= new Airport(3);
 //            System.out.println("|");}
 //    }
 
+ public Square getBoard(int position) {
+  switch (position) {
+   case 1:
+    return parking1;
+   case 2:
+    return fields2;
+   case 3:
+    return airport3;
+   case 4:
+    return cinema4;
+   case 5:
+    return railroad5;
+   case 6:
+    return trophy6;
+   case 7:
+    return fields7;
+   case 8:
+    return cinema8;
+   case 9:
+    return fields9;
+   case 10:
+    return railroad10;
+   case 11:
+    return airport11;
+   case 12:
+    return fields12;
+   case 13:
+    jail.index = 13;
+    return jail;
+   case 14:
+    return fields14;
+   case 15:
+    return cinema15;
+   case 16:
+    return railroad16;
+   case 17:
+    return
+            tax17;
+   case 18:
+    return fields18;
+   case 19:
+    return fields19;
+   case 20:
+    return airport20;
+   case 21:
+    return bank21;
+   case 22:
+    return cinema22;
+   case 23:
+    return fields23;
+   case 24:
+    return chance24;
+   default:
+    return null;
+  }
+ }
+}
