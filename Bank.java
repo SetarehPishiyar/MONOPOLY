@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Bank extends Square{
 
-    public Bank(int index){
-        super(index);
+    public Bank(String name,int index){
+        super(name,index);
     }
 
     public void offerInvest(Player currentPlayer){
@@ -27,12 +27,14 @@ public class Bank extends Square{
         currentPlayer.lendedMoney = currentPlayer.money / 2;
         currentPlayer.money -= currentPlayer.lendedMoney;
         currentPlayer.invested = true;
+        System.out.println(currentPlayer.getName() + " invested " + currentPlayer.lendedMoney + "$ in Bank.");
     }
 
     public void getBonus(Player currentPlayer){
 
         if(currentPlayer.invested){
             currentPlayer.money += currentPlayer.lendedMoney*2;
+            System.out.println(currentPlayer.getName() + " gets " + currentPlayer.lendedMoney*2 + "$ Bonus.");
             currentPlayer.lendedMoney = 0;
             currentPlayer.invested = false;
         }
