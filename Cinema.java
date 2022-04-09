@@ -3,8 +3,8 @@ package MONOPOLY;
 import java.util.Scanner;
 
 public class Cinema extends Property {
-    public Cinema(int index) {
-        super(index, 200, 25);
+    public Cinema(String name,int index) {
+        super(name,index, 200, 25);
     }
 
     //when owner buys a new cinema this method should be called
@@ -18,7 +18,7 @@ public class Cinema extends Property {
     public void offerBuying(Property prop, Player currentPlayer){
         if (!prop.mortgaged){
             currentPlayer.doesntHaveEnoughMoney(currentPlayer, prop.getPrice());
-            System.out.println("You can buy this cinema and earn money:) \n"+"Price:"+prop.getPrice()+"\n wanna buy this cinema? (enter buy if you want.)");
+            System.out.println("You can buy this cinema and earn money:) \n"+"Price:"+prop.getPrice()+"\n wanna buy this cinema? (enter buy if you want or no to pass.)");
             Scanner sc = new Scanner(System.in);
             String answer = sc.next();
             if (answer.equalsIgnoreCase("buy")){
