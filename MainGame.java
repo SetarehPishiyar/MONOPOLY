@@ -3,8 +3,8 @@ package MONOPOLY;
 import java.util.Scanner;
 
 public class MainGame {
-    Player[] players = new Player[4];
-//    Airport[] airports=new Airport[3];
+    Player[] players = new Player[9];
+    //    Airport[] airports=new Airport[3];
 //    {
 //        airports[0]=new Airport(3);
 //        airports[1]=new Airport(11);
@@ -52,19 +52,25 @@ public class MainGame {
         while (true){
             System.out.println("enter players name and enter \"end\" at the end.");
             String name=" ";
-        while (name!="end") {
-            name=sc.next();
-            players[numberOfPlayer]=new Player(name,theBoard);
-            numberOfPlayer++;
-        }
-        if (numberOfPlayer<2 || numberOfPlayer>4){
-            System.out.println("invalid,try again.");
-            numberOfPlayer=0;
-        }
-        else {
-            creategame=true;
-            break;
-        }
+            while (!name.equalsIgnoreCase("end")) {
+                name=sc.next();
+                players[numberOfPlayer]=new Player(name,theBoard);
+                numberOfPlayer++;
+            }
+            players[numberOfPlayer]=null;
+            numberOfPlayer--;
+
+            if (numberOfPlayer<2 || numberOfPlayer>4){
+
+                System.out.println("invalid,try again.");
+                numberOfPlayer=0;
+            }
+            else {
+                creategame=true;
+                System.out.println("game was created.now start the game.");
+
+                break;
+            }
         }
 
     }
@@ -77,42 +83,42 @@ public class MainGame {
                 System.out.println("round "+round);
                 for (int i=0;i<numberOfPlayer;i++){
                     if (!players[i].isLost(players[i])){
-                    System.out.println("It is"+players[i].getName()+"'s turn.");
-                    if (!players[i].inJail) {
-                        int diceNumber = diceNum();
-                        players[i].position += diceNumber;
-                        play(players[i].position, players[i]);
-                        if (diceNumber == 6) {
-                            Scanner sc = new Scanner(System.in);
-                            System.out.println("You can play one more time.enter yes for playing and no for passing.");
-                            String answer = sc.next();
-                            if (answer.equalsIgnoreCase("no")) {
-                                continue;
-                            }
-                            if (answer.equalsIgnoreCase("yes")) {
-                                diceNumber = diceNum();
-                                if (diceNumber == 6) {
-                                    players[i].moveTo(13);
-                                    theBoard.jail.sendToJail(players[i]);
-                                    theBoard.jail.offer(players[i]);
+                        System.out.println("It is "+players[i].getName()+"'s turn.");
+                        if (!players[i].inJail) {
+                            int diceNumber = diceNum();
+                            players[i].position += diceNumber;
+                            play(players[i].position, players[i]);
+                            if (diceNumber == 6) {
+                                Scanner sc = new Scanner(System.in);
+                                System.out.println("You can play one more time.enter yes for playing and no for passing.");
+                                String answer = sc.next();
+                                if (answer.equalsIgnoreCase("no")) {
+                                    continue;
                                 }
-                                else {
-                                    players[i].position+=diceNumber;
-                                    play(players[i].position,players[i]);
+                                if (answer.equalsIgnoreCase("yes")) {
+                                    diceNumber = diceNum();
+                                    if (diceNumber == 6) {
+                                        players[i].moveTo(13);
+                                        theBoard.jail.sendToJail(players[i]);
+                                        theBoard.jail.offer(players[i]);
+                                    }
+                                    else {
+                                        players[i].position+=diceNumber;
+                                        play(players[i].position,players[i]);
+                                    }
                                 }
                             }
                         }
-                    }
-                    else if (players[i].inJail){
-                        players[i].addMoney(-10);
-                        int DiceNum=diceNum();
-                        if (DiceNum==1){
-                            theBoard.jail.free(players[i]);
+                        else if (players[i].inJail){
+                            players[i].addMoney(-10);
+                            int DiceNum=diceNum();
+                            if (DiceNum==1){
+                                theBoard.jail.free(players[i]);
+                            }
                         }
-                    }
 
 
-                }}
+                    }}
             }
 
         }
@@ -141,11 +147,11 @@ public class MainGame {
                 theBoard.fields14.payRent(currentPlayer);
             }
             case 18:{
-               theBoard.fields18.offerBuying(theBoard.fields18,currentPlayer);
+                theBoard.fields18.offerBuying(theBoard.fields18,currentPlayer);
                 theBoard.fields18.payRent(currentPlayer);
             }
             case 19:{
-                theBoard.fields19.offerBuying(theBoard.fields19.,currentPlayer);
+                theBoard.fields19.offerBuying(theBoard.fields19,currentPlayer);
                 theBoard.fields19.payRent(currentPlayer);
             }
             case 23:{
@@ -155,24 +161,24 @@ public class MainGame {
             case 3:theBoard.airport3.offerBuyTicket(currentPlayer);
             case 11:theBoard.airport11.offerBuyTicket(currentPlayer);
             case 20:theBoard.airport20.offerBuyTicket(currentPlayer);
-            case 4:theBoard.cinema4.offerBuying(theBoard.cinema4, currentPlayer);
-                theBoard.cinema4.payRent(currentPlayer);
-            case 8:
+            case 4:{
+                theBoard.cinema4.offerBuying(theBoard.cinema4, currentPlayer);
+                theBoard.cinema4.payRent(currentPlayer);}
+            case 8:{
                 theBoard.cinema8.offerBuying(theBoard.cinema8, currentPlayer);
-                theBoard.cinema8.payRent(currentPlayer);
+                theBoard.cinema8.payRent(currentPlayer);}
             case 15:
-               theBoard.cinema15.offerBuying(theBoard.cinema15, currentPlayer);
-                theBoard.cinema15.payRent(currentPlayer);
-            case 5:theBoard.railroad5.payMoney(currentPlayer);
-            case 10:theBoard.railroad10.payMoney(currentPlayer);
+            {theBoard.cinema15.offerBuying(theBoard.cinema15, currentPlayer);
+                theBoard.cinema15.payRent(currentPlayer);}
+            case 5:{theBoard.railroad5.payMoney(currentPlayer);}
+            case 10:{theBoard.railroad10.payMoney(currentPlayer);}
             case 16:theBoard.railroad16.payMoney(currentPlayer);
-
             case 6:theBoard.trophy6.getTrophy(currentPlayer);
             case 17:theBoard.tax17.payTax(currentPlayer);
             case 24:theBoard.chance24.getChanceCard(currentPlayer,theBoard);
-            case 21:
+            case 21:{
                 theBoard.bank21.getBonus(currentPlayer);
-                theBoard.bank21.offerInvest(currentPlayer);
+                theBoard.bank21.offerInvest(currentPlayer);}
         }
         playersCommand(currentPlayer);
     }
@@ -181,26 +187,29 @@ public class MainGame {
         Scanner sc=new Scanner(System.in);
         String comm = sc.next();
         while (!comm.equalsIgnoreCase("pass")){
-        switch (comm){
-            case "index" :
-                System.out.println(currentPlayer.position);
-            case "property":
-                currentPlayer.Property();
-            case "rank":
-                rank();
-                System.out.println(currentPlayer.rank);
-        }}
+            switch (comm){
+                case "index" :
+                    System.out.println(currentPlayer.position);
+                case "property":
+                    currentPlayer.Property();
+                case "rank":
+                    rank();
+                    System.out.println(currentPlayer.rank);
+            }}
     }
     public boolean endGame () {
         rank();
-        for (Player p:players){
+        for (int i=0;i<numberOfPlayer;i++){
+            Player p=players[i];
             if (p.rank==2){
                 if (p.isLost(p)){
-                    for (Player p1:players){
+                    for (int j=0;j<numberOfPlayer;j++){
+                        Player p1=players[j];
                         if (p1.rank==1){
                             System.out.println(p1.getName()+"\n YOU WON");
                             System.out.println(p.getName()+"\n YOU LOST,"+p1.getName()+"WON THE GAME");
-                            for (Player p2:players){
+                            for (int k=0;k<numberOfPlayer;k++){
+                                Player p2=players[k];
                                 if (p2!=p && p2!=p1){
                                     System.out.println(p2.getName()+"\n YOU LOST,"+p1.getName()+"WON THE GAME");
 
@@ -213,10 +222,11 @@ public class MainGame {
             }
         }
 
-return false;
+        return false;
     }
     public int diceNum(){
         Scanner input = new Scanner(System.in);
+        System.out.println("enter your dice number:");
         int DiceNum=input.nextInt();
         if(!(DiceNum <= 6 && DiceNum >= 1)) {
             System.out.println("Enter a valid number 1 to 6");
@@ -227,21 +237,21 @@ return false;
 
     }
     public void rank(){
-Player[] players1=players;
-for (int i=0;i<players1.length;i++){
-    for (int j=i+1;j<players1.length;j++){
-        if (players1[i].getWealth()<players1[j].getWealth()){
-            Player temp=players1[i];
-            players1[i]=players1[j];
-            players1[j]=temp;
+        Player[] players1=players;
+        for (int i=0;i<numberOfPlayer-1;i++){
+            for (int j=i+1;j<numberOfPlayer;j++){
+                if (players1[i].getWealth()<players1[j].getWealth()){
+                    Player temp=players1[i];
+                    players1[i]=players1[j];
+                    players1[j]=temp;
+                }
+            }
         }
-    }
-}
 
 
-for (int i=0;i<players1.length;i++){
-    players1[i].rank=i+1;
-}
+        for (int i=0;i<numberOfPlayer;i++){
+            players1[i].rank=i+1;
+        }
     }
 
 

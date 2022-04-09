@@ -71,15 +71,15 @@ public class Player {
     }
 
     public void buy(int index){
-        if(board.getBoard()[index] instanceof Fields) {
-            if(((Fields) board.getBoard()[index]).owner == null)
-                this.buyByProperty((Fields)board.getBoard()[index]);
+        if(board.getBoard(index) instanceof Fields) {
+            if(((Fields) board.getBoard(index)).owner == null)
+                this.buyByProperty((Fields)board.getBoard(index));
             else
                 System.out.println("This property is bought.");
         }
-        else if(board.getBoard()[index] instanceof Cinema) {
-            if (((Cinema) board.getBoard()[index]).owner == null)
-                this.buyByProperty((Cinema) board.getBoard()[index]);
+        else if(board.getBoard(index) instanceof Cinema) {
+            if (((Cinema) board.getBoard(index)).owner == null)
+                this.buyByProperty((Cinema) board.getBoard(index));
             else
                 System.out.println("This property is bought.");
         }
@@ -92,15 +92,15 @@ public class Player {
         property.setOwner(null);
     }
     public void sell (int index){
-        if(board.getBoard()[index] instanceof Fields) {
-            if(((Fields) board.getBoard()[index]).owner.equals(this))
-                this.sellByProperty((Fields)board.getBoard()[index]);
+        if(board.getBoard(index) instanceof Fields) {
+            if(((Fields) board.getBoard(index)).owner.equals(this))
+                this.sellByProperty((Fields)board.getBoard(index));
             else
                 System.out.println("You are not the owner.");
         }
-        else if(board.getBoard()[index] instanceof Cinema) {
-            if (((Cinema) board.getBoard()[index]).owner.equals(this))
-                this.sellByProperty((Cinema) board.getBoard()[index]);
+        else if(board.getBoard(index) instanceof Cinema) {
+            if (((Cinema) board.getBoard(index)).owner.equals(this))
+                this.sellByProperty((Cinema) board.getBoard(index));
             else
                 System.out.println("You are not the owner.");
         }
