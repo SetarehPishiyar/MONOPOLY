@@ -6,13 +6,17 @@ public abstract class Property extends Square{
     //private String name;
     private int price;
     private int rent;
-    protected Player owner;
+    protected Player owner = null;
     public boolean mortgaged = false;
 
-    public Property(int index, int price, int rent){
-        super(index);
+    public Property(String name, int index, int price, int rent){
+        super(name,index);
         this.price = price;
         this.rent = rent;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public int getPrice(){
@@ -58,6 +62,9 @@ public abstract class Property extends Square{
     public void payRent(Player currentPlayer){
         if (owner!=currentPlayer && owner!=null){
             currentPlayer.pay(owner,rent);
+            if(rent!=0)
+                System.out.println(rent + "$ paid for rent.");
         }
+
     }
 }
