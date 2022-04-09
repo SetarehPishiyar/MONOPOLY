@@ -4,38 +4,38 @@ import java.util.Scanner;
 
 public class MainGame {
     Player[] players = new Player[4];
-    Airport[] airports=new Airport[3];
-    {
-        airports[0]=new Airport(3);
-        airports[1]=new Airport(11);
-        airports[2]=new Airport(20);
-    }
-    Cinema[] cinemas=new Cinema[3];
-    {
-        cinemas[0]=new Cinema(4);
-        cinemas[1]=new Cinema(8);
-        cinemas[2]=new Cinema(15);
-    }
-    Trophy trophy=new Trophy(6);
-    Tax tax=new Tax(17);
-    Railroad railroads=new Railroad(3);
-    Chance chance=new Chance(24);
-    Jail jail=new Jail(13);
-    Bank bank=new Bank(21);
-    Fields[] fields=new Fields[8];
-    {
-        fields[0]=new Fields(2,100,50);
-        fields[1]=new Fields(7,100,50);
-        fields[2]=new Fields(9,100,50);
-        fields[3]=new Fields(12,100,50);
-        fields[4]=new Fields(14,100,50);
-        fields[5]=new Fields(18,100,50);
-        fields[6]=new Fields(19,100,50);
-        fields[7]=new Fields(23,100,50);
-    }
+//    Airport[] airports=new Airport[3];
+//    {
+//        airports[0]=new Airport(3);
+//        airports[1]=new Airport(11);
+//        airports[2]=new Airport(20);
+//    }
+//    Cinema[] cinemas=new Cinema[3];
+//    {
+//        cinemas[0]=new Cinema(4);
+//        cinemas[1]=new Cinema(8);
+//        cinemas[2]=new Cinema(15);
+//    }
+//    Trophy trophy=new Trophy(6);
+//    Tax tax=new Tax(17);
+//    Railroad railroads=new Railroad(3);
+//    Chance chance=new Chance(24);
+//    Jail jail=new Jail(13);
+//    Bank bank=new Bank(21);
+//    Fields[] fields=new Fields[8];
+//    {
+//        fields[0]=new Fields(2,100,50);
+//        fields[1]=new Fields(7,100,50);
+//        fields[2]=new Fields(9,100,50);
+//        fields[3]=new Fields(12,100,50);
+//        fields[4]=new Fields(14,100,50);
+//        fields[5]=new Fields(18,100,50);
+//        fields[6]=new Fields(19,100,50);
+//        fields[7]=new Fields(23,100,50);
+//    }
     Board theBoard=new Board();
     int numberOfPlayer = 0;
-    boolean creatGame=false;
+    boolean creategame=false;
     int round=1;
     boolean isEnded=false;
 
@@ -50,8 +50,11 @@ public class MainGame {
     private void createGame() {
         Scanner sc = new Scanner(System.in);
         while (true){
-        while (sc.hasNext()) {
-            players[numberOfPlayer]=new Player(sc.nextLine(),theBoard);
+            System.out.println("enter players name and enter \"end\" at the end.");
+            String name=" ";
+        while (name!="end") {
+            name=sc.next();
+            players[numberOfPlayer]=new Player(name,theBoard);
             numberOfPlayer++;
         }
         if (numberOfPlayer<2 || numberOfPlayer>4){
@@ -59,14 +62,14 @@ public class MainGame {
             numberOfPlayer=0;
         }
         else {
-            creatGame=true;
+            creategame=true;
             break;
         }
         }
 
     }
     public void startGame () {
-        if (!creatGame) {
+        if (!creategame) {
             System.out.println("game was not created\n");
         }
         else {
@@ -90,8 +93,8 @@ public class MainGame {
                                 diceNumber = diceNum();
                                 if (diceNumber == 6) {
                                     players[i].moveTo(13);
-                                    jail.sendToJail(players[i]);
-                                    jail.offer(players[i]);
+                                    theBoard.jail.sendToJail(players[i]);
+                                    theBoard.jail.offer(players[i]);
                                 }
                                 else {
                                     players[i].position+=diceNumber;
@@ -104,7 +107,7 @@ public class MainGame {
                         players[i].addMoney(-10);
                         int DiceNum=diceNum();
                         if (DiceNum==1){
-                            jail.free(players[i]);
+                            theBoard.jail.free(players[i]);
                         }
                     }
 
@@ -117,56 +120,59 @@ public class MainGame {
     public void play(int index,Player currentPlayer){
         switch (index){
             case 2:{
-                fields[0].offerBuying(fields[0],currentPlayer);
-                fields[0].payRent(currentPlayer);
+                theBoard.fields2.offerBuying(theBoard.fields2,currentPlayer);
+                theBoard.fields2.payRent(currentPlayer);
                 //offer build
             }
             case 7:{
-                fields[1].offerBuying(fields[1],currentPlayer);
-                fields[1].payRent(currentPlayer);
+                theBoard.fields7.offerBuying(theBoard.fields7,currentPlayer);
+                theBoard.fields7.payRent(currentPlayer);
             }
             case 9:{
-                fields[2].offerBuying(fields[2],currentPlayer);
-                fields[2].payRent(currentPlayer);
+                theBoard.fields9.offerBuying(theBoard.fields9,currentPlayer);
+                theBoard.fields9.payRent(currentPlayer);
             }
             case 12:{
-                fields[3].offerBuying(fields[3],currentPlayer);
-                fields[3].payRent(currentPlayer);
+                theBoard.fields12.offerBuying(theBoard.fields12,currentPlayer);
+                theBoard.fields12.payRent(currentPlayer);
             }
             case 14:{
-                fields[4].offerBuying(fields[4],currentPlayer);
-                fields[4].payRent(currentPlayer);
+                theBoard.fields14.offerBuying(theBoard.fields14,currentPlayer);
+                theBoard.fields14.payRent(currentPlayer);
             }
             case 18:{
-                fields[5].offerBuying(fields[5],currentPlayer);
-                fields[5].payRent(currentPlayer);
+               theBoard.fields18.offerBuying(theBoard.fields18,currentPlayer);
+                theBoard.fields18.payRent(currentPlayer);
             }
             case 19:{
-                fields[6].offerBuying(fields[6],currentPlayer);
-                fields[6].payRent(currentPlayer);
+                theBoard.fields19.offerBuying(theBoard.fields19.,currentPlayer);
+                theBoard.fields19.payRent(currentPlayer);
             }
             case 23:{
-                fields[7].offerBuying(fields[7],currentPlayer);
-                fields[7].payRent(currentPlayer);
+                theBoard.fields23.offerBuying(theBoard.fields23,currentPlayer);
+                theBoard.fields23.payRent(currentPlayer);
             }
-            case 3:airports[0].offerBuyTicket(currentPlayer);
-            case 11:airports[1].offerBuyTicket(currentPlayer);
-            case 20:airports[2].offerBuyTicket(currentPlayer);
-            case 4:cinemas[0].offerBuying(cinemas[0], currentPlayer);
-            cinemas[0].payRent(currentPlayer);
+            case 3:theBoard.airport3.offerBuyTicket(currentPlayer);
+            case 11:theBoard.airport11.offerBuyTicket(currentPlayer);
+            case 20:theBoard.airport20.offerBuyTicket(currentPlayer);
+            case 4:theBoard.cinema4.offerBuying(theBoard.cinema4, currentPlayer);
+                theBoard.cinema4.payRent(currentPlayer);
             case 8:
-                cinemas[1].offerBuying(cinemas[1], currentPlayer);
-                cinemas[1].payRent(currentPlayer);
+                theBoard.cinema8.offerBuying(theBoard.cinema8, currentPlayer);
+                theBoard.cinema8.payRent(currentPlayer);
             case 15:
-                cinemas[2].offerBuying(cinemas[2], currentPlayer);
-                cinemas[2].payRent(currentPlayer);
-            case 5,10,16:railroads.payMoney(currentPlayer);
-            case 6:trophy.getTrophy(currentPlayer);
-            case 17:tax.payTax(currentPlayer);
-            case 24:chance.getChanceCard(currentPlayer,theBoard);
+               theBoard.cinema15.offerBuying(theBoard.cinema15, currentPlayer);
+                theBoard.cinema15.payRent(currentPlayer);
+            case 5:theBoard.railroad5.payMoney(currentPlayer);
+            case 10:theBoard.railroad10.payMoney(currentPlayer);
+            case 16:theBoard.railroad16.payMoney(currentPlayer);
+
+            case 6:theBoard.trophy6.getTrophy(currentPlayer);
+            case 17:theBoard.tax17.payTax(currentPlayer);
+            case 24:theBoard.chance24.getChanceCard(currentPlayer,theBoard);
             case 21:
-                bank.getBonus(currentPlayer);
-                bank.offerInvest(currentPlayer);
+                theBoard.bank21.getBonus(currentPlayer);
+                theBoard.bank21.offerInvest(currentPlayer);
         }
         playersCommand(currentPlayer);
     }
