@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>MONOPOLY</OriginalElement>
+  <nodes>
+    <node x="778.0" y="601.0">MONOPOLY.Main</node>
+    <node x="400.99999999999994" y="434.0">MONOPOLY.Hotel</node>
+    <node x="1528.0" y="182.0">MONOPOLY.Railroad</node>
+    <node x="575.0" y="601.0">MONOPOLY.Board</node>
+    <node x="1000.0" y="0.0">MONOPOLY.Square</node>
+    <node x="510.99999999999994" y="160.0">MONOPOLY.Bank</node>
+    <node x="581.0" y="411.0">MONOPOLY.Cinema</node>
+    <node x="165.0" y="366.0">MONOPOLY.Fields</node>
+    <node x="0.0" y="601.0">MONOPOLY.Player</node>
+    <node x="702.0" y="160.0">MONOPOLY.Jail</node>
+    <node x="1317.0" y="160.0">MONOPOLY.Airport</node>
+    <node x="1719.0" y="182.0">MONOPOLY.Trophy</node>
+    <node x="0.0" y="434.0">MONOPOLY.House</node>
+    <node x="1063.0" y="182.0">MONOPOLY.Chance</node>
+    <node x="263.0" y="126.0">MONOPOLY.Property</node>
+    <node x="890.9999999999999" y="182.0">MONOPOLY.Tax</node>
+    <node x="321.0" y="601.0">MONOPOLY.MainGame</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="MONOPOLY.Chance" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="1180.0" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Cinema" target="MONOPOLY.Property" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="695.0" y="341.0" />
+      <point x="377.0" y="341.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="MONOPOLY.House" target="MONOPOLY.Property" relationship="GENERALIZATION">
+      <point x="0.0" y="-27.0" />
+      <point x="72.5" y="341.0" />
+      <point x="377.0" y="341.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="MONOPOLY.Railroad" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="1613.5" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Airport" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="1412.5" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Fields" target="MONOPOLY.Property" relationship="GENERALIZATION">
+      <point x="0.0" y="-95.0" />
+      <point x="273.0" y="341.0" />
+      <point x="377.0" y="341.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="MONOPOLY.Trophy" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="1803.5" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Hotel" target="MONOPOLY.Property" relationship="GENERALIZATION">
+      <point x="0.0" y="-27.0" />
+      <point x="480.99999999999994" y="341.0" />
+      <point x="377.0" y="341.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="MONOPOLY.Property" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-95.0" />
+      <point x="377.0" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Bank" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="596.5" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Tax" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="966.9999999999999" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="MONOPOLY.Jail" target="MONOPOLY.Square" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="786.5" y="101.0" />
+      <point x="1073.5" y="101.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.519392033542977" showDependencies="false" x="943.9999999999999" y="549.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
