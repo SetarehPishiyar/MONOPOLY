@@ -3,86 +3,110 @@ package MONOPOLY;
 import java.util.Scanner;
 
 public class Fields extends Property {
-    private Player holder;
     private int price;
+    protected int NumOfHouses = 0;
+    protected int NumOfHotels = 0;
     private House[] houses = new House[4];
     private Hotel hotel;
 
     public Fields(String name,int index, int price, int rent) {
-        super(name,index, 100, rent);
+        super(name,index, 100, 50);
     }
 
     public int getNumHouses(){
-        int count=0;
-        for(int i=0; houses[i] != null; i++)
-            count++;
-        return count;
+        return NumOfHouses;
     }
 
     public int getNumHotels(){
-        if(hotel == null)
-            return 0;
-        return 1;
+        return NumOfHotels;
     }
 
     //when owner builds a new house ( more than one ) this method should be called.
     public void increaseRent() {
+        if(getNumHouses() == 0 && getNumHotels() == 0)
+            setRent(50);
         if(getNumHouses() == 1)
-            return;
-        setRent(getRent() + 100);
+            setRent(150);
+        if(getNumHouses() == 2)
+            setRent(250);
+        if(getNumHouses() == 3)
+            setRent(350);
+        if(getNumHouses() == 4)
+            setRent(450);
+        if(getNumHouses() == 0 && getNumHotels() == 1)
+            setRent(600);
+
     }
 
     //when owner builds a new house ( more than one ) or hotel this method should be called.
     public void increasePrice() {
-        if(getNumHouses() == 0)
-            return;
-        setPrice(getPrice() + 150);
+        if(getNumHouses() == 0 && getNumHotels() == 0)
+            price = 100;
+        if(getNumHotels() == 1)
+            price = 150;
+        if(getNumHouses() == 2)
+            price = 300;
+        if(getNumHouses() == 3)
+            price = 450;
+        if(getNumHouses() == 4 )
+            price = 600;
+        if(getNumHouses() == 0 && getNumHotels() == 1)
+            price = 800;
+
     }
 
     public void build(Player currentPlayer) {
-        int j=0;
-        Fields[] field = new Fields[10];
-        for(int i=0; i < currentPlayer.getNumFields(); i++) {
-            if(currentPlayer.properties.get(i) instanceof  Fields) {
-                field[j] = (Fields) currentPlayer.properties.get(i);
-                j++;
+        if(getNumHouses()<4){
+            if(currentPlayer.NumofBuiltHouses <= 5) {
+                houses[getNumHouses()] = new House("House", index);
+                currentPlayer.addMoney(-150);
+                NumOfHouses++;
+                increasePrice();
+                increaseRent();
+                currentPlayer.NumofBuiltHouses++;
+                System.out.println("Your house is built. you have " + NumOfHouses + " houses in this field and "+currentPlayer.NumofBuiltHouses + " houses in the game.");
             }
+            else
+                System.out.println("you can not add any houses. Each player can only build 5 houses in each game.");
         }
-        int maxHousesNum=0, minHousesNum=0;
-        for(int i=0; i <= j; i++) {
-            if(field[i].getNumHouses() > maxHousesNum)
-                maxHousesNum = field[i].getNumHouses();
-            if(field[i].getNumHouses() < minHousesNum)
-                minHousesNum = field[i].getNumHouses();
-        }
-        if(maxHousesNum != minHousesNum) {
-            if(this.getNumHouses() == maxHousesNum) {
-                System.out.println("You can not build another house on this field until the number of houses on other fields reaches the number of houses on this field.");
-                return;
-            }
-        }
-        if(getNumHouses() < 4) {
-            houses[getNumHouses()] = new House(name,index);
-            currentPlayer.addMoney(-150);
-            increaseRent();
-            increasePrice();
-            System.out.printf("Your House is built now! Now you have %d houses.\n", getNumHouses());
-        } else if(getNumHouses() == 4 && getNumHotels() == 0) {
-            hotel = new Hotel(name,index, getPrice()+100);
+        else if(getNumHouses() == 4){
+            hotel = new Hotel("Hotel",index);
             currentPlayer.addMoney(-100);
+            NumOfHotels = 1;
+            NumOfHouses = 0;
             increasePrice();
-            System.out.println("Your hotel is built now!");
-        } else if(getNumHouses() == 4 && getNumHotels() == 1) {
-            System.out.println("You can't add any house or hotel in your field!");
+            increaseRent();
+            System.out.println("Your hotel is build.");
         }
     }
     public void offerToBuild(Player currentPlayer,Fields field){
+
         if (currentPlayer.owns(field)) {
-            System.out.println("You can build houses or hotel if you have the conditions wanna try? building each house costs 150$ for you\nyou can also convert 4 houses to a hotel and it costs 150$(enter build for trying)");
+            if(field.NumOfHouses < 4) {
+                System.out.println("You can build 4 houses in this field. you have " + NumOfHouses + " now.");
+                System.out.println("Each house costs 150$ and you can get rent too.");
+                System.out.println("enter build for a new house or pass to skip.");
+            }
+            else if(NumOfHouses == 4 && NumOfHotels == 0){
+                System.out.println("You can build 4 houses in this field. you have " + NumOfHouses + " now.");
+                System.out.println("Each hotel costs 800$ and you can get rent too.");
+                System.out.println("enter build for a new hotel or pass to skip.");
+            }
+            else if(NumOfHotels == 1 && NumOfHouses == 0) {
+                System.out.println("Your field is full.");
+                System.out.println("Enter pass to skip.");
+            }
+
+
             Scanner sc = new Scanner(System.in);
             String answer = sc.next();
-            if (answer.equalsIgnoreCase("build"))
-                build(currentPlayer);
+            switch (answer){
+                case "build":
+                    build(currentPlayer);
+                    break;
+                case "pass":
+                    break;
+            }
         }
     }
 }
