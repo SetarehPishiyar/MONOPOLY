@@ -1,4 +1,4 @@
-![alt text]https://c8.alamy.com/comp/BF9PYM/monopoly-board-game-BF9PYM.jpg
+![alt text](https://c8.alamy.com/comp/BF9PYM/monopoly-board-game-BF9PYM.jpg)
 # MONOPOLY
 This project is a miniaturized version of the game Monopoly.
 ##What is Monopoly?
