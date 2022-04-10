@@ -32,7 +32,7 @@ public class Airport extends Square{
         System.out.println("Ticket Bought. Choose destination: (3 , 11 , 20)");
         Scanner input = new Scanner(System.in);
         int destination = input.nextInt();
-        while ((destination != 3 && destination != 11 && destination != 20) || destination == currentPlayer.index()){
+        while ((destination != 3 && destination != 11 && destination != 20)){
             System.out.println("invalid input. this destination is not an airport. choose another destination:");
             if(destination == currentPlayer.index())
                 System.out.println("You are already here. choose another destination:");

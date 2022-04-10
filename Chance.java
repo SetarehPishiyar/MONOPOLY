@@ -14,20 +14,20 @@ public class Chance extends Square {
         int RanNum = input.nextInt(5) + 1;
         switch (RanNum) {
             case 1:
-                currentPlayer.money += 200;
                 System.out.println("You earned 200$.");
+                currentPlayer.money += 200;
                 break;
             case 2:
-                currentBoard.jail.sendToJail(currentPlayer);
                 System.out.println("Go to Jail.");
+                currentBoard.jail.sendToJail(currentPlayer);
                 break;
             case 3:
-                currentPlayer.money -= (currentPlayer.money / 10);
                 System.out.println("Pay tax.");
+                currentPlayer.money -= (currentPlayer.money / 10);
                 break;
             case 4:
-                currentPlayer.moveTo(index + 3);
                 System.out.println("move 3 squares forward.");
+                currentPlayer.moveTo(index + 3);
                 break;
             case 5:
                 if(currentPlayer.inJail) {
