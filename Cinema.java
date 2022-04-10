@@ -10,8 +10,11 @@ public class Cinema extends Property {
     //when owner buys a new cinema this method should be called
     public void increaseRent(Player currentPlayer) {
         if(currentPlayer.getNumCinemas() == 1)
-            return;
-        setRent(getRent()*2);
+            setRent(25);
+        if(currentPlayer.getNumCinemas() == 2)
+            setRent(50);
+        if(currentPlayer.getNumCinemas() == 3)
+            setRent(100);
     }
 
     @Override
