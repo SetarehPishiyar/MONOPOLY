@@ -52,20 +52,7 @@ public class MainGame {
         }
 
     }
-    public void sellCommands(Property prop, Player currentPlayer){
-        if(prop.owner == currentPlayer) {
-            System.out.println("If you want to sell your property enter sell. enter pass to skip.");
-            Scanner sc = new Scanner(System.in);
-            String input = sc.next();
-            switch (input) {
-                case "sell":
-                    currentPlayer.sell(theBoard.fields2.index);
-                    break;
-                case "pass":
-                    break;
-            }
-        }
-    }
+
     public void startGame () {
         if (!creategame) {
             System.out.println("game was not created\n");
@@ -122,7 +109,6 @@ public class MainGame {
                     theBoard.fields2.offerToBuild(currentPlayer, theBoard.fields2);
                 theBoard.fields2.offerBuying(theBoard.fields2,currentPlayer);
                 theBoard.fields2.payRent(currentPlayer);
-                sellCommands(theBoard.fields2,currentPlayer);
                 break;
                 //offer build
             }
@@ -131,7 +117,6 @@ public class MainGame {
                     theBoard.fields7.offerToBuild(currentPlayer, theBoard.fields7);
                 theBoard.fields7.offerBuying(theBoard.fields7,currentPlayer);
                 theBoard.fields7.payRent(currentPlayer);
-                sellCommands(theBoard.fields7,currentPlayer);
                 break;
             }
             case 9:{
@@ -139,7 +124,6 @@ public class MainGame {
                     theBoard.fields9.offerToBuild(currentPlayer, theBoard.fields9);
                 theBoard.fields9.offerBuying(theBoard.fields9,currentPlayer);
                 theBoard.fields9.payRent(currentPlayer);
-                sellCommands(theBoard.fields9,currentPlayer);
                 break;
             }
             case 12:{
@@ -147,7 +131,6 @@ public class MainGame {
                     theBoard.fields12.offerToBuild(currentPlayer, theBoard.fields12);
                 theBoard.fields12.offerBuying(theBoard.fields12,currentPlayer);
                 theBoard.fields12.payRent(currentPlayer);
-                sellCommands(theBoard.fields12,currentPlayer);
                 break;
             }
             case 14:{
@@ -155,7 +138,6 @@ public class MainGame {
                     theBoard.fields14.offerToBuild(currentPlayer, theBoard.fields14);
                 theBoard.fields14.offerBuying(theBoard.fields14,currentPlayer);
                 theBoard.fields14.payRent(currentPlayer);
-                sellCommands(theBoard.fields14,currentPlayer);
                 break;
             }
             case 18: {
@@ -163,7 +145,6 @@ public class MainGame {
                     theBoard.fields18.offerToBuild(currentPlayer, theBoard.fields18);
                 theBoard.fields18.offerBuying(theBoard.fields18, currentPlayer);
                 theBoard.fields18.payRent(currentPlayer);
-                sellCommands(theBoard.fields18,currentPlayer);
                 break;
             }
             case 19:{
@@ -171,7 +152,6 @@ public class MainGame {
                     theBoard.fields19.offerToBuild(currentPlayer, theBoard.fields19);
                 theBoard.fields19.offerBuying(theBoard.fields19,currentPlayer);
                 theBoard.fields19.payRent(currentPlayer);
-                sellCommands(theBoard.fields19,currentPlayer);
                 break;
             }
             case 23:{
@@ -179,7 +159,6 @@ public class MainGame {
                     theBoard.fields23.offerToBuild(currentPlayer, theBoard.fields23);
                 theBoard.fields23.offerBuying(theBoard.fields23,currentPlayer);
                 theBoard.fields23.payRent(currentPlayer);
-                sellCommands(theBoard.fields23,currentPlayer);
                 break;
             }
             case 3:theBoard.airport3.offerBuyTicket(currentPlayer);break;
@@ -188,19 +167,16 @@ public class MainGame {
             case 4:{
                 theBoard.cinema4.offerBuying(theBoard.cinema4, currentPlayer);
                 theBoard.cinema4.payRent(currentPlayer);
-                sellCommands(theBoard.cinema4,currentPlayer);
                 break;
             }
             case 8:{
                 theBoard.cinema8.offerBuying(theBoard.cinema8, currentPlayer);
                 theBoard.cinema8.payRent(currentPlayer);
-                sellCommands(theBoard.cinema8,currentPlayer);
                 break;
             }
             case 15:
             {theBoard.cinema15.offerBuying(theBoard.cinema15, currentPlayer);
                 theBoard.cinema15.payRent(currentPlayer);
-                sellCommands(theBoard.cinema15,currentPlayer);
                 break;
             }
             case 5:{theBoard.railroad5.payMoney(currentPlayer);break;}
@@ -217,7 +193,6 @@ public class MainGame {
             case 22:
                 theBoard.cinema22.offerBuying(theBoard.cinema22, currentPlayer);
                 theBoard.cinema22.payRent(currentPlayer);
-                sellCommands(theBoard.cinema22,currentPlayer);
                 break;
 
         }
