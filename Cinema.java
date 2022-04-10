@@ -9,12 +9,17 @@ public class Cinema extends Property {
 
     //when owner buys a new cinema this method should be called
     public void increaseRent(Player currentPlayer) {
-        if(currentPlayer.getNumCinemas() == 1)
-            setRent(25);
-        if(currentPlayer.getNumCinemas() == 2)
-            setRent(50);
-        if(currentPlayer.getNumCinemas() == 3)
-            setRent(100);
+        for(Property p : currentPlayer.properties){
+            if(p instanceof Cinema){
+                if(currentPlayer.getNumCinemas() == 1)
+                    p.setRent(25);
+                if(currentPlayer.getNumCinemas() == 2)
+                    p.setRent(50);
+                if(currentPlayer.getNumCinemas() == 3)
+                    p.setRent(100);
+            }
+
+        }
     }
 
     @Override
@@ -26,8 +31,8 @@ public class Cinema extends Property {
             String answer = sc.next();
             if (answer.equalsIgnoreCase("buy")){
                 currentPlayer.buyByProperty(prop);
-                increaseRent(currentPlayer);
             }
+            increaseRent(currentPlayer);
         }
     }
 }
