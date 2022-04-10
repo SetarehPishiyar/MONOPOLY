@@ -1,28 +1,41 @@
 ![alt text](https://c8.alamy.com/comp/BF9PYM/monopoly-board-game-BF9PYM.jpg)
 # MONOPOLY
 This project is a miniaturized version of the game Monopoly.
+
 ##What is Monopoly?
 Monopoly is a multi-player economics-themed board game. In the game, players roll two dice to move around the game board, buying and trading properties, and developing them with houses and hotels.
 Players collect rent from their opponents, with the goal being to drive them into bankruptcy.
 Money can also be gained or lost through Chance and Community Chest cards, and tax squares. Players receive a stipend every time they pass "Go", and can end up in jail, from which they cannot move until they have met one of three conditions.
 The game has numerous house rules, and hundreds of different editions exist, as well as many spin-offs and related media.
+
 ###What does bank do in this game?
 The Bank pays salaries and gives bonuses. It sells and auctions properties and it also sells houses and hotels to the players and loans money when required on mortgages. The Bank also collects all taxes, fines, loans and interest.
+
 ###Players
 Each of them recieves 1500$ as initial investment .The player's goal is to remain financially solvent while forcing opponents into bankruptcy by buying and developing pieces of property.
 Players can have 2 kind of *cash property(money)* and *non-cash Property*.
+
 ##Board
 This game has 24 cells,That contains:
 ***
 1-Parking
+
 2-Airports
+
 3-Cinemas
+
 4-Chance cell
+
 5-Tax cell
+
 6-Road
+
 7-Fields
+
 8-Jail
+
 9-Bank
+
 ***
 
 ##How to play?
