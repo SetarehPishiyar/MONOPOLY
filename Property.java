@@ -43,27 +43,22 @@ public abstract class Property extends Square{
         owner = newOwner;
     }
 
-    //    public void bought(Player currentPlayer){
-//        owner = currentPlayer;
-//        currentPlayer.buy(this);
-//    }
     public void offerBuying(Property prop,Player currentPlayer){
-        if (prop.mortgaged == false){
+        if (!prop.mortgaged){
             currentPlayer.doesntHaveEnoughMoney(currentPlayer,prop.price);
-            System.out.println("You can buy this field and earn money:) \n"+"Price:"+prop.price+"\n wanna buy this field?(enter buy if you want.)");
+            System.out.println("You can buy this field and earn money:) \n"+"Price:"+prop.price+"$\nwanna buy this field? enter buy or no");
             Scanner sc=new Scanner(System.in);
             String answer=sc.next();
             if (answer.equalsIgnoreCase("buy")){
                 currentPlayer.buyByProperty(prop);
             }
-            return;
         }
     }
     public void payRent(Player currentPlayer){
         if (owner!=currentPlayer && owner!=null){
             currentPlayer.pay(owner,rent);
             if(rent!=0)
-                System.out.println(rent + "$ paid for rent.");
+                System.out.println(rent + "$ paid to " + owner.getName() + " for rent.");
         }
 
     }

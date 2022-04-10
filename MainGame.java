@@ -53,7 +53,6 @@ public class MainGame {
 
     }
     public void startGame () {
-        System.out.println("You are in Parking[1] now.");
         if (!creategame) {
             System.out.println("game was not created\n");
         }
@@ -64,6 +63,7 @@ public class MainGame {
                 for (int i=0;i<numberOfPlayer;i++){
                     if (!players[i].isLost(players[i])){
                         System.out.println("It is "+players[i].getName()+"'s turn.");
+                        System.out.println("You are now in " + players[i].index() + "th Square.");
                         if (!players[i].inJail) {
                             int diceNumber = diceNum();
                             players[i].moveTo(players[i].position + diceNumber);
@@ -175,11 +175,17 @@ public class MainGame {
                 theBoard.bank21.offerInvest(currentPlayer);
                 break;
             }
+            case 22:
+                theBoard.cinema22.offerBuying(theBoard.cinema22, currentPlayer);
+                theBoard.cinema22.payRent(currentPlayer);
+                break;
+
         }
         playersCommand(currentPlayer);
     }
     public void playersCommand(Player currentPlayer){
-        System.out.println("you can ask your index.properties,and rank or just pass");
+        System.out.println("You have " + currentPlayer.money + "$");
+        System.out.println("you can ask your index, property and rank or just pass");
         Scanner sc=new Scanner(System.in);
         String comm = sc.next();
         while (!comm.equalsIgnoreCase("pass")){
