@@ -9,12 +9,13 @@ public class Player {
     private String name;
     public int rank=0;
     public boolean inJail = false;
+    public boolean isLost = false;
     public boolean invested = false;
     public int lendedMoney = 0;
     public int position;
     public Board board;
     protected int money = 1500;
-    int turnsInJail=0;
+    protected int NumofBuiltHouses = 0;
     public ArrayList<Property> properties = new ArrayList<Property>();
 
     public Player(String name, Board board){
@@ -114,13 +115,18 @@ public class Player {
         addMoney(-50);
     }
     public void doesntHaveEnoughMoney(Player player,int price){
-        if (player.money<price && !player.isLost(player)){
-            System.out.println("It seems you dont have enough money \n sell something.");
+        while (player.money<price && !player.isLost){
+            System.out.println("It seems you dont have enough money \nsell something to earn money.");
             player.Property();
             System.out.println("What do you want to sell? enter the number");
             Scanner sc=new Scanner(System.in);
             int answer=sc.nextInt();
-            player.sell(answer);
+            if(properties.size()!=0)
+                player.sell(answer);
+            else {
+                player.isLost = true;
+                System.out.println("Player " + player.getName() + " is lost.");
+            }
         }
     }
 
@@ -163,11 +169,6 @@ public class Player {
         System.out.println("]");
     }
 
-    public boolean isLost(Player player){
-        if (player.properties.size()==0 && player.money==0)
-            return true;
-        else return false;
-    }
 public int getWealth(){
         int wealth=0;
         for (Property p:properties)
