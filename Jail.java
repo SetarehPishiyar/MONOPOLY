@@ -10,6 +10,7 @@ public class Jail extends Square {
     public void sendToJail(Player jailedPlayer){
         jailedPlayer.inJail = true;
         System.out.println("Player " + jailedPlayer.getName() + " is in jail now.");
+        jailedPlayer.setPosition(13);
     }
     public void free(Player jailedPlayer){
         jailedPlayer.inJail = false;
@@ -23,10 +24,8 @@ public class Jail extends Square {
         if (answer.equalsIgnoreCase("free")){
             if (currentPlayer.money>100)
             free(currentPlayer);
-            else {
-
-            }
         }
+        return;
     }
 
 

@@ -115,7 +115,7 @@ public class Player {
         addMoney(-50);
     }
     public void doesntHaveEnoughMoney(Player player,int price){
-        while (player.money<price && !player.isLost){
+        while (player.money<price && !player.isLost && player.getWealth()>=price){
             System.out.println("It seems you dont have enough money \nsell something to earn money.");
             player.Property();
             System.out.println("What do you want to sell? enter the number");

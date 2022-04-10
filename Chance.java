@@ -11,7 +11,7 @@ public class Chance extends Square {
     public void getChanceCard(Player currentPlayer, Board currentBoard) {
 
         Random input = new Random();
-        int RanNum = input.nextInt(5) + 1;
+        int RanNum = input.nextInt(4) + 1;
         switch (RanNum) {
             case 1:
                 System.out.println("You earned 200$.");
@@ -20,6 +20,7 @@ public class Chance extends Square {
             case 2:
                 System.out.println("Go to Jail.");
                 currentBoard.jail.sendToJail(currentPlayer);
+                currentBoard.jail.offer(currentPlayer);
                 break;
             case 3:
                 System.out.println("Pay tax.");
@@ -29,21 +30,7 @@ public class Chance extends Square {
                 System.out.println("move 3 squares forward.");
                 currentPlayer.moveTo(index + 3);
                 break;
-            case 5:
-                if(currentPlayer.inJail) {
-                    currentBoard.jail.free(currentPlayer);
-                    currentPlayer.money += 50;
-                    System.out.println("You are out of jail now");
-                }
-                else
-                    System.out.println("You are not in jail.");
-                break;
-            case 6:
-                //Dafe baad Tax nadim  BONUS
-                break;
-            case 7:
-                //10$ to all players   BONUS
-                break;
+
         }
     }
 

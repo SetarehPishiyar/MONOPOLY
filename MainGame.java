@@ -235,7 +235,7 @@ public class MainGame {
                         Player p1=players[j];
                         if (p1.rank==1){
                             System.out.println(p1.getName()+"\n YOU WON");
-                            System.out.println(p.getName()+"\n YOU LOST,"+p1.getName()+"WON THE GAME");
+                            System.out.println(p.getName()+"\n YOU LOST,"+p1.getName()+" WON THE GAME");
                             for (int k=0;k<numberOfPlayer;k++){
                                 Player p2=players[k];
                                 if (p2!=p && p2!=p1){
