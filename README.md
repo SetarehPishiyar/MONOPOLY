@@ -85,7 +85,7 @@ PLayer reciveis a chand card :
 #### Jail
 #### Bank
 non-selling
-Players can invest or pass.They can pawn half of their money and recive 2*investment money next time they reach bank cell.
+Players can invest or pass.They can pawn half of their money and recive 2*investment money next time they reach bank cell.*
 ### Other rules
 ### Going to jail
 If the player's dice number was 6 he can play one more time as a bonous but if it becomes 6 again he will go to jail.
